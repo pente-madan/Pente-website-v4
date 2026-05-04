@@ -1,0 +1,49 @@
+.progress-bar {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  height: 2px;
+  display: flex;
+  gap: 3px;
+  padding: 0 2.5rem;
+  z-index: 99;
+  background: var(--bg);
+}
+
+.progress-segment {
+  flex: 1;
+  height: 100%;
+  background: var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-segment .fill {
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.progress-segment.played .fill {
+  transform: scaleX(1);
+}
+
+.progress-segment.active .fill {
+  animation: fillBar var(--dur, 7s) linear forwards;
+}
+
+.progress-segment.paused .fill {
+  animation-play-state: paused;
+}
+
+@keyframes fillBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,54 @@
+.scene-hero .grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .scene-hero .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.scene-hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 1rem 0 1.5rem;
+  font-variation-settings: 'opsz' 144;
+}
+
+.scene-hero h1 .italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--amber);
+}
+
+.scene-hero h1 .strike {
+  position: relative;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.scene-hero h1 .strike::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 52%;
+  height: 2px;
+  background: var(--terracotta);
+  transform: rotate(-2deg);
+}
+
+.scene-hero .sub {
+  font-size: 1.05rem;
+  color: var(--ink-dim);
+  max-width: 480px;
+  line-height: 1.55;
+  margin-bottom: 1.8rem;
+}

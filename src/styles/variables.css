@@ -1,0 +1,18 @@
+:root {
+  --bg: #ffffff;
+  --bg-2: #fafafa;
+  --bg-3: #ffffff;
+  --ink: #000000;
+  --ink-dim: #555555;
+  --ink-muted: #999999;
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.18);
+  --amber: #000000;
+  --amber-glow: #444444;
+  --terracotta: #000000;
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Geist', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --nav-h: 70px;
+  --controls-h: 60px;
+}

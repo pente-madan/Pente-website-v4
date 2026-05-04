@@ -1,0 +1,40 @@
+.scene-stat {
+  text-align: center;
+}
+
+.scene-stat .number {
+  font-family: var(--serif);
+  font-size: clamp(8rem, 22vw, 22rem);
+  line-height: 0.9;
+  font-weight: 300;
+  font-style: italic;
+  background: linear-gradient(180deg, #000 0%, #777 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.05em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  margin: 1rem 0;
+}
+
+.scene-stat .number .unit {
+  font-size: 0.32em;
+  font-style: normal;
+  color: var(--ink-muted);
+  background: none;
+  -webkit-text-fill-color: var(--ink-muted);
+  margin-left: 0.2em;
+  font-family: var(--sans);
+}
+
+.scene-stat .caption {
+  font-size: 1.15rem;
+  color: var(--ink-dim);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.scene-stat .caption strong {
+  color: var(--ink);
+  font-weight: 500;
+}

@@ -1,0 +1,105 @@
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--controls-h);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--line);
+}
+
+.scene-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-dim);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scene-label .num {
+  color: var(--amber);
+}
+
+.scene-label .title {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.scene-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scene-dot {
+  width: 32px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.scene-dot:hover {
+  background: var(--ink-dim);
+}
+
+.scene-dot.active {
+  background: var(--amber);
+  width: 48px;
+}
+
+.scene-dot.played {
+  background: var(--ink);
+}
+
+.play-pause {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.play-pause:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .controls {
+    padding: 0 1.25rem;
+  }
+  .scene-label .title {
+    display: none;
+  }
+  .scene-dot {
+    width: 20px;
+  }
+  .scene-dot.active {
+    width: 32px;
+  }
+}

@@ -1,0 +1,100 @@
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 50vw;
+  max-width: 620px;
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.1);
+  top: -8%;
+  left: -8%;
+  animation: drift-1 28s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 42vw;
+  max-width: 520px;
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.07);
+  bottom: -12%;
+  right: -6%;
+  animation: drift-2 36s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 32vw;
+  max-width: 420px;
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.08);
+  top: 35%;
+  left: 38%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: drift-3 32s ease-in-out infinite, morph 18s ease-in-out infinite;
+}
+
+@keyframes drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(120px, 80px) scale(1.18);
+  }
+  66% {
+    transform: translate(70px, 150px) scale(0.92);
+  }
+}
+
+@keyframes drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-130px, -90px) scale(1.1);
+  }
+  66% {
+    transform: translate(-80px, -160px) scale(1.22);
+  }
+}
+
+@keyframes drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(90px, -110px) scale(1.05);
+  }
+  66% {
+    transform: translate(-70px, -50px) scale(1.28);
+  }
+}
+
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none !important;
+  }
+}

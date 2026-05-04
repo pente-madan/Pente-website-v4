@@ -1,0 +1,12 @@
+.stage {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  bottom: var(--controls-h);
+  overflow: hidden;
+}
+
+.stage.paused .progress-segment.active .fill {
+  animation-play-state: paused !important;
+}

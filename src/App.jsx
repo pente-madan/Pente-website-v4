@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navigation from './components/layout/Navigation';
 import ProgressBar from './components/layout/ProgressBar';
 import Controls from './components/layout/Controls';
+import VideoBackground from './components/VideoBackground/VideoBackground';
 import BackgroundBlobs from './components/BackgroundBlobs/BackgroundBlobs';
 import ChatDemo from './components/ChatDemo/ChatDemo';
 import Scene from './components/Scene/Scene';
@@ -12,7 +13,7 @@ import SolutionScene from './components/scenes/SolutionScene/SolutionScene';
 import ResultsScene from './components/scenes/ResultsScene/ResultsScene';
 import HowScene from './components/scenes/HowScene/HowScene';
 import CTAScene from './components/scenes/CTAScene/CTAScene';
-import { useSceneRotation } from './hooks/useSceneRotation';
+import { useScrollNavigation } from './hooks/useScrollNavigation';
 import { useChatSimulation } from './hooks/useChatSimulation';
 import './App.css';
 
@@ -29,41 +30,17 @@ const SCENE_TITLES = [
 ];
 
 function App() {
-  const { current, isPaused, goToScene, togglePause, setHover } = useSceneRotation({
-    scenesCount: 7,
-    durations: SCENE_DURATIONS,
-  });
-
+  const { current, goToScene } = useScrollNavigation(7);
   const { messages, leadStatus } = useChatSimulation(current);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
-        goToScene((current + 1) % 7);
-      } else if (e.key === 'ArrowLeft') {
-        goToScene((current - 1 + 7) % 7);
-      } else if (e.key === ' ') {
-        e.preventDefault();
-        togglePause();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [current, goToScene, togglePause]);
 
   return (
     <div className="App">
+      <VideoBackground />
       <BackgroundBlobs />
       <Navigation />
-      <ProgressBar current={current} durations={SCENE_DURATIONS} isPaused={isPaused} />
+      <ProgressBar current={current} />
 
-      <div
-        className={`stage ${isPaused ? 'paused' : ''}`}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+      <div className="stage">
         <Scene isActive={current === 0} className="scene-hero">
           <HeroScene />
         </Scene>
@@ -99,8 +76,6 @@ function App() {
         current={current}
         total={7}
         sceneTitle={SCENE_TITLES[current]}
-        isPaused={isPaused}
-        onTogglePlay={togglePause}
         onSceneClick={goToScene}
       />
     </div>

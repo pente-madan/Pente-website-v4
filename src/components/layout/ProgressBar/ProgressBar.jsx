@@ -1,16 +1,17 @@
 import React from 'react';
 import './ProgressBar.css';
 
-const ProgressBar = ({ current, durations, isPaused }) => {
+const ProgressBar = ({ current }) => {
+  const totalScenes = 7;
+
   return (
     <div className="progress-bar">
-      {durations.map((dur, idx) => (
+      {Array.from({ length: totalScenes }).map((_, idx) => (
         <div
           key={idx}
           className={`progress-segment ${idx < current ? 'played' : ''} ${
             idx === current ? 'active' : ''
-          } ${isPaused ? 'paused' : ''}`}
-          style={{ '--dur': `${dur}ms` }}
+          }`}
         >
           <div className="fill"></div>
         </div>

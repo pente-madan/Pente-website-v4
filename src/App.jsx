@@ -13,7 +13,7 @@ import SolutionScene from './components/scenes/SolutionScene/SolutionScene';
 import ResultsScene from './components/scenes/ResultsScene/ResultsScene';
 import HowScene from './components/scenes/HowScene/HowScene';
 import CTAScene from './components/scenes/CTAScene/CTAScene';
-import { useScrollNavigation } from './hooks/useScrollNavigation';
+import { useSceneRotation } from './hooks/useSceneRotation';
 import { useChatSimulation } from './hooks/useChatSimulation';
 import './App.css';
 
@@ -30,7 +30,10 @@ const SCENE_TITLES = [
 ];
 
 function App() {
-  const { current, goToScene } = useScrollNavigation(7);
+  const { current, isPaused, goToScene, togglePause, setHover } = useSceneRotation({
+    scenesCount: 7,
+    durations: SCENE_DURATIONS,
+  });
   const { messages, leadStatus } = useChatSimulation(current);
   const scrollTimeout = useRef(null);
   const isScrolling = useRef(false);
@@ -211,6 +214,8 @@ function App() {
         total={7}
         sceneTitle={SCENE_TITLES[current]}
         onSceneClick={goToScene}
+        onTogglePlay={togglePause}
+        isPaused={isPaused}
       />
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import './ResultsScene.css';
 
 const ResultsScene = ({ isActive }) => {
@@ -37,12 +36,14 @@ const ResultsScene = ({ isActive }) => {
 
   return (
     <>
-      <div className="anim" style={{ display: 'inline-flex' }}>
-        <Eyebrow>PROVEN RESULTS</Eyebrow>
+      <div className="header-row">
+        <div className="anim" style={{ display: 'inline-flex' }}>
+          PROVEN RESULTS
+        </div>
+        <h2 className="section-title anim">
+          The numbers <em>don't</em> need a sales pitch.
+        </h2>
       </div>
-      <h2 className="section-title anim" style={{ maxWidth: '800px', margin: '0.8rem auto 0' }}>
-        The numbers <em>don't</em> need a sales pitch.
-      </h2>
 
       <div className="results-grid anim">
         <div className="result">
@@ -64,7 +65,7 @@ const ResultsScene = ({ isActive }) => {
             <span ref={(el) => (countRefs.current[2] = el)}>0</span>
             <span className="small">+</span>
           </div>
-          <div className="label">Visitors handled — zero extra headcount</div>
+          <div className="label">Visitors handled zero extra headcount</div>
         </div>
       </div>
     </>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import './GapScene.css';
 
 const GapScene = () => {
@@ -15,22 +14,25 @@ const GapScene = () => {
     <>
       <div className="header-row">
         <div className="anim" style={{ display: 'inline-flex' }}>
-          <Eyebrow>THE GAP</Eyebrow>
+          THE GAP
         </div>
         <h2 className="section-title anim">
-          What you have today vs. what <em>Pente Sites</em> delivers tomorrow.
+          What you have today vs what Pente Sites delivers tomorrow.
         </h2>
       </div>
 
-      <div className="gap-table anim">
-        <div className="gap-row header">
-          <div className="left">Today</div>
-          <div className="right">With Pente</div>
-        </div>
+      <div className="gap-comparison anim">
         {gapItems.map((item, idx) => (
-          <div key={idx} className="gap-row">
-            <div className="left">{item.left}</div>
-            <div className="right">{item.right}</div>
+          <div key={idx} className="gap-card">
+            <div className="old-way">
+              <span className="label">Today</span>
+              <p className="text">{item.left}</p>
+            </div>
+            <div className="arrow-divider">→</div>
+            <div className="new-way">
+              <span className="label">With Pente</span>
+              <p className="text">{item.right}</p>
+            </div>
           </div>
         ))}
       </div>

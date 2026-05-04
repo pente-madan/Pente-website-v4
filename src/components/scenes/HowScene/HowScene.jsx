@@ -1,5 +1,4 @@
 import React from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import './HowScene.css';
 
 const HowScene = () => {
@@ -35,7 +34,7 @@ const HowScene = () => {
     <>
       <div className="header-row">
         <div className="anim" style={{ display: 'inline-flex' }}>
-          <Eyebrow>HOW IT WORKS</Eyebrow>
+          HOW IT WORKS
         </div>
         <h2 className="section-title anim">
           Five steps. <em>One</em> intelligent system.

@@ -1,15 +1,15 @@
 .scene-how .header-row {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-top: -1.5rem;
+  margin-bottom: 3rem;
 }
 
 .steps {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line-strong);
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
@@ -25,13 +25,25 @@
 }
 
 .step {
-  background: var(--bg);
   padding: 1.8rem 1.4rem;
-  transition: background 0.3s;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05),
+              inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .step:hover {
-  background: var(--bg-3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15),
+              0 12px 30px -10px rgba(255, 255, 255, 0.15),
+              0 4px 15px -5px rgba(255, 255, 255, 0.1),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 .step-num {
@@ -42,6 +54,7 @@
   line-height: 1;
   font-weight: 300;
   margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
 .step-title {
@@ -51,10 +64,11 @@
   font-weight: 400;
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
+  color: #ffffff;
 }
 
 .step-desc {
-  color: var(--ink-dim);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.85rem;
   line-height: 1.45;
 }

@@ -3,6 +3,7 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: 4rem;
   align-items: center;
+  margin-top: 3rem;
 }
 
 @media (max-width: 1000px) {
@@ -12,14 +13,23 @@
   }
 }
 
+.scene-hero .anim:first-child {
+  margin-bottom: 1.2rem;
+}
+
 .scene-hero h1 {
   font-family: var(--serif);
   font-weight: 300;
   font-size: clamp(2.4rem, 5.2vw, 4.8rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
-  margin: 1rem 0 1.5rem;
+  margin: 0 0 2rem;
   font-variation-settings: 'opsz' 144;
+}
+
+.scene-hero h1 .word {
+  display: inline-block;
+  will-change: opacity, transform;
 }
 
 .scene-hero h1 .italic {
@@ -50,5 +60,5 @@
   color: var(--ink-dim);
   max-width: 480px;
   line-height: 1.55;
-  margin-bottom: 1.8rem;
+  margin: 0 0 2.2rem;
 }

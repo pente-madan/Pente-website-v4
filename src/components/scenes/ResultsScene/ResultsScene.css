@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.scene-results .header-row {
+  margin-top: -4.5rem;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

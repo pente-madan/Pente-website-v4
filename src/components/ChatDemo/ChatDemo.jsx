@@ -1,17 +1,54 @@
 import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import './ChatDemo.css';
 
 const ChatDemo = ({ isHeroMode, messages, leadStatus }) => {
   const streamRef = useRef(null);
+  const chatRef = useRef(null);
+  const prevMessagesLength = useRef(0);
 
   useEffect(() => {
     if (streamRef.current) {
       streamRef.current.scrollTop = streamRef.current.scrollHeight;
     }
+
+    // Animate new messages
+    if (messages.length > prevMessagesLength.current) {
+      const newMessages = Array.from(streamRef.current?.children || []).slice(
+        prevMessagesLength.current
+      );
+      
+      gsap.fromTo(
+        newMessages,
+        {
+          opacity: 0,
+          y: 10,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'power2.out',
+        }
+      );
+    }
+    
+    prevMessagesLength.current = messages.length;
   }, [messages]);
 
+  useEffect(() => {
+    if (chatRef.current) {
+      // Smooth transition between hero and regular mode
+      gsap.to(chatRef.current, {
+        duration: 0.7,
+        ease: 'power3.inOut',
+      });
+    }
+  }, [isHeroMode]);
+
   return (
-    <div className={`chat-demo ${isHeroMode ? 'hero-mode' : ''}`}>
+    <div ref={chatRef} className={`chat-demo ${isHeroMode ? 'hero-mode' : ''}`}>
       <div className="chat-header">
         <div className="chat-url">www.your-site.com</div>
         <div className="chat-status">

@@ -1,5 +1,4 @@
 import React from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import Button from '../../common/Button';
 import './CTAScene.css';
 
@@ -7,7 +6,7 @@ const CTAScene = () => {
   return (
     <>
       <div className="anim" style={{ display: 'inline-flex' }}>
-        <Eyebrow>THE DECISION</Eyebrow>
+        THE DECISION
       </div>
       <h2 className="anim">
         A beautiful brochure — or a <em>revenue-generating system</em>

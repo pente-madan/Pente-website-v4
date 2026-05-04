@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 const conversation = [
   {
     type: 'bot',
-    text: "Hi 👋 I see you're checking out our pricing — want me to find the right plan for your team size?",
+    text: "Hi 👋 I see you're checking out our pricing want me to find the right plan for your team size?",
   },
   { type: 'user', text: "Sure, we're a 12-person agency." },
   {
@@ -13,7 +13,7 @@ const conversation = [
   { type: 'user', text: "Both honestly. We get traffic but it doesn't convert." },
   {
     type: 'bot',
-    text: "Got it — exactly what Pente fixes. I'll book a 15-min walkthrough — what's your email?",
+    text: "Got it exactly what Pente fixes. I'll book a 15-min walkthrough what's your email?",
   },
   { type: 'user', text: 'alex@studiowest.com' },
   { type: 'bot', text: 'Booked for Thursday 2pm. Calendar invite sent. Talk soon, Alex ✨' },

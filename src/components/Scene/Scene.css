@@ -3,15 +3,14 @@
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 2.5rem;
+  will-change: opacity;
 }
 
 .scene.active {
-  opacity: 1;
   pointer-events: auto;
 }
 
@@ -21,34 +20,5 @@
 }
 
 .scene .anim {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.scene.active .anim {
-  animation: animIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-.scene.active .anim:nth-child(1) {
-  animation-delay: 0.15s;
-}
-
-.scene.active .anim:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.scene.active .anim:nth-child(3) {
-  animation-delay: 0.45s;
-}
-
-.scene.active .anim:nth-child(4) {
-  animation-delay: 0.6s;
-}
-
-.scene.active .anim:nth-child(5) {
-  animation-delay: 0.75s;
-}
-
-.scene.active .anim:nth-child(6) {
-  animation-delay: 0.9s;
+  will-change: transform, opacity;
 }

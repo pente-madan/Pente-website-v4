@@ -1,5 +1,4 @@
 import React from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import './SolutionScene.css';
 
 const SolutionScene = () => {
@@ -46,10 +45,10 @@ const SolutionScene = () => {
     <>
       <div className="header-row">
         <div className="anim" style={{ display: 'inline-flex' }}>
-          <Eyebrow>THE SOLUTION</Eyebrow>
+          THE SOLUTION
         </div>
         <h2 className="section-title anim">
-          Your hardest-working <em>salesperson</em> — never off the clock.
+          Your hardest-working <em>salesperson</em> never off the clock.
         </h2>
       </div>
 

@@ -1,18 +1,77 @@
 .controls {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--controls-h);
+  left: 2rem;
+  top: 52%;
+  transform: translateY(-50%);
   z-index: 90;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2.5rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--line);
+  justify-content: center;
+  gap: 1.5rem;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.play-pause {
+  align-self: center;
+}
+
+.dots-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.scene-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.scene-title-wrapper {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  position: absolute;
+  left: calc(100% + 1rem);
+}
+
+.scene-number {
+  align-self: center;
+}
+
+.scene-title-wrapper {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.scene-title-wrapper .title {
+  color: #ffffff;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.7rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.scene-number {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.scene-number .num {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .scene-label {
@@ -20,21 +79,24 @@
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--ink-dim);
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
 .scene-label .num {
-  color: var(--amber);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .scene-label .title {
-  color: var(--ink);
+  color: #ffffff;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: none;
   letter-spacing: 0;
   font-weight: 400;
@@ -42,37 +104,42 @@
 
 .scene-dots {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
 }
 
 .scene-dot {
-  width: 32px;
-  height: 4px;
+  width: 4px;
+  height: 40px;
   border-radius: 2px;
-  background: var(--line-strong);
+  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s ease, height 0.3s ease;
   border: none;
   padding: 0;
+  will-change: transform;
 }
 
 .scene-dot:hover {
-  background: var(--ink-dim);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .scene-dot.active {
-  background: var(--amber);
-  width: 48px;
+  background: rgba(255, 255, 255, 0.6);
+  height: 55px;
 }
 
 .scene-dot.played {
-  background: var(--ink);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .play-pause {
-  background: transparent;
-  border: 1px solid var(--line-strong);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -80,26 +147,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1),
+              0 4px 12px rgba(0, 0, 0, 0.3),
+              inset 0 0 20px rgba(255, 255, 255, 0.05);
+  will-change: transform;
 }
 
 .play-pause:hover {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15),
+              0 6px 16px rgba(0, 0, 0, 0.4),
+              inset 0 0 30px rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 700px) {
   .controls {
-    padding: 0 1.25rem;
+    left: 1rem;
   }
-  .scene-label .title {
-    display: none;
+  .dots-container {
+    gap: 0.5rem;
+  }
+  .scene-title-wrapper .title {
+    font-size: 1rem;
   }
   .scene-dot {
-    width: 20px;
+    height: 20px;
   }
   .scene-dot.active {
-    width: 32px;
+    height: 32px;
   }
 }

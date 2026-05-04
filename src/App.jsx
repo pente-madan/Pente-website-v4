@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navigation from './components/layout/Navigation';
 import ProgressBar from './components/layout/ProgressBar';
 import Controls from './components/layout/Controls';
@@ -35,6 +35,10 @@ function App() {
   });
 
   const { messages, leadStatus } = useChatSimulation(current);
+  const scrollTimeout = useRef(null);
+  const isScrolling = useRef(false);
+  const touchStart = useRef(null);
+  const touchEnd = useRef(null);
 
   // Keyboard navigation
   useEffect(() => {
@@ -53,6 +57,106 @@ function App() {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [current, goToScene, togglePause]);
 
+  // Scroll navigation
+  useEffect(() => {
+    const handleWheel = (e) => {
+      // Prevent default scroll behavior
+      e.preventDefault();
+
+      // If already scrolling, ignore
+      if (isScrolling.current) return;
+
+      // Clear any existing timeout
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      isScrolling.current = true;
+
+      // Determine scroll direction (support both deltaY and deltaX)
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      
+      if (delta > 0) {
+        // Scroll down/right - next scene
+        if (current < 6) {
+          goToScene(current + 1);
+        }
+      } else if (delta < 0) {
+        // Scroll up/left - previous scene
+        if (current > 0) {
+          goToScene(current - 1);
+        }
+      }
+
+      // Reset scrolling flag after a delay
+      scrollTimeout.current = setTimeout(() => {
+        isScrolling.current = false;
+      }, 600);
+    };
+
+    // Add wheel event listener with passive: false to allow preventDefault
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // Also listen for trackpad gestures
+    window.addEventListener('mousewheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('mousewheel', handleWheel);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, [current, goToScene]);
+
+  // Touch/Swipe navigation for mobile
+  useEffect(() => {
+    const minSwipeDistance = 50;
+
+    const handleTouchStart = (e) => {
+      touchEnd.current = null;
+      touchStart.current = e.targetTouches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      touchEnd.current = e.targetTouches[0].clientY;
+    };
+
+    const handleTouchEnd = () => {
+      if (!touchStart.current || !touchEnd.current) return;
+      
+      if (isScrolling.current) return;
+
+      const distance = touchStart.current - touchEnd.current;
+      const isSwipeUp = distance > minSwipeDistance;
+      const isSwipeDown = distance < -minSwipeDistance;
+
+      if (isSwipeUp && current < 6) {
+        isScrolling.current = true;
+        goToScene(current + 1);
+        setTimeout(() => {
+          isScrolling.current = false;
+        }, 600);
+      } else if (isSwipeDown && current > 0) {
+        isScrolling.current = true;
+        goToScene(current - 1);
+        setTimeout(() => {
+          isScrolling.current = false;
+        }, 600);
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [current, goToScene]);
+
   return (
     <div className="App">
       <BackgroundBlobs />
@@ -64,31 +168,40 @@ function App() {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Scene isActive={current === 0} className="scene-hero">
+        <video
+          className="background-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777359747/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1.mp4" type="video/mp4" />
+        </video>
+        <Scene isActive={current === 0} className="scene-hero" animationType="hero">
           <HeroScene />
         </Scene>
 
-        <Scene isActive={current === 1} className="scene-stat">
+        <Scene isActive={current === 1} className="scene-stat" animationType="stat">
           <StatScene />
         </Scene>
 
-        <Scene isActive={current === 2} className="scene-gap">
+        <Scene isActive={current === 2} className="scene-gap" animationType="gap">
           <GapScene />
         </Scene>
 
-        <Scene isActive={current === 3} className="scene-solution">
+        <Scene isActive={current === 3} className="scene-solution" animationType="solution">
           <SolutionScene />
         </Scene>
 
-        <Scene isActive={current === 4} className="scene-results">
+        <Scene isActive={current === 4} className="scene-results" animationType="results">
           <ResultsScene isActive={current === 4} />
         </Scene>
 
-        <Scene isActive={current === 5} className="scene-how">
+        <Scene isActive={current === 5} className="scene-how" animationType="how">
           <HowScene />
         </Scene>
 
-        <Scene isActive={current === 6} className="scene-cta">
+        <Scene isActive={current === 6} className="scene-cta" animationType="cta">
           <CTAScene />
         </Scene>
 

@@ -9,10 +9,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
 }
 
 .logo {
@@ -23,6 +23,12 @@
   font-weight: 500;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
+}
+
+.logo-image {
+  height: 30px;
+  width: auto;
+  display: block;
 }
 
 .logo-mark {

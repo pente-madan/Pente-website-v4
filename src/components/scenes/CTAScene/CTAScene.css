@@ -1,6 +1,9 @@
 .scene-cta {
   text-align: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scene-cta::before {
@@ -14,8 +17,17 @@
 .scene-cta .scene-inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 5rem auto 0;
 }
 
+.scene-cta .header-row {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.scene-cta .section-title,
 .scene-cta h2 {
   font-family: var(--serif);
   font-weight: 300;
@@ -26,6 +38,7 @@
   margin: 1rem auto 0;
 }
 
+.scene-cta .section-title em,
 .scene-cta h2 em {
   font-style: italic;
   color: var(--amber);

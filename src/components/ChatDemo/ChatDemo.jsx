@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './ChatDemo.css';
 
-const ChatDemo = ({ isHeroMode, messages, leadStatus }) => {
+const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages, leadStatus }) => {
   const streamRef = useRef(null);
   const chatRef = useRef(null);
   const prevMessagesLength = useRef(0);
@@ -45,10 +45,12 @@ const ChatDemo = ({ isHeroMode, messages, leadStatus }) => {
         ease: 'power3.inOut',
       });
     }
-  }, [isHeroMode]);
+  }, [isHeroMode, isHowMode, isResultsMode]);
+
+  const chatClasses = `chat-demo ${isHeroMode ? 'hero-mode' : ''} ${isHowMode ? 'how-mode' : ''} ${isResultsMode ? 'results-mode' : ''}`;
 
   return (
-    <div ref={chatRef} className={`chat-demo ${isHeroMode ? 'hero-mode' : ''}`}>
+    <div ref={chatRef} className={chatClasses}>
       <div className="chat-header">
         <div className="chat-url">www.your-site.com</div>
         <div className="chat-status">

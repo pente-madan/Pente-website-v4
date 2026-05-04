@@ -16,6 +16,9 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  transform: translateZ(0);
+  will-change: transform;
+  pointer-events: none;
 }
 
 .stage.paused .progress-segment.active .fill {

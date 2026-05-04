@@ -41,23 +41,25 @@ const HeroScene = () => {
   return (
     <div className="grid">
       <div>
-        <div className="anim" style={{ display: 'inline-flex' }}>
-          THE PITCH
+        <div className="header-row">
+          <div className="anim" style={{ display: 'inline-flex' }}>
+            THE PITCH
+          </div>
+          <h1 className="section-title anim">
+            {headingWords.map((word, idx) => (
+              <React.Fragment key={idx}>
+                <span
+                  ref={(el) => (wordsRef.current[idx] = el)}
+                  className={`word ${word.strike ? 'strike' : ''} ${word.italic ? 'italic' : ''}`}
+                >
+                  {word.text}
+                </span>
+                {word.break && <br />}
+                {!word.break && ' '}
+              </React.Fragment>
+            ))}
+          </h1>
         </div>
-        <h1 className="anim">
-          {headingWords.map((word, idx) => (
-            <React.Fragment key={idx}>
-              <span
-                ref={(el) => (wordsRef.current[idx] = el)}
-                className={`word ${word.strike ? 'strike' : ''} ${word.italic ? 'italic' : ''}`}
-              >
-                {word.text}
-              </span>
-              {word.break && <br />}
-              {!word.break && ' '}
-            </React.Fragment>
-          ))}
-        </h1>
         <p className="sub anim">
           Your 24/7 AI sales agent. Engages every visitor, qualifies them in real time, and turns existing
           traffic into pipeline.

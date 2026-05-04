@@ -5,14 +5,16 @@ import './CTAScene.css';
 const CTAScene = () => {
   return (
     <>
-      <div className="anim" style={{ display: 'inline-flex' }}>
-        THE DECISION
+      <div className="header-row">
+        <div className="anim" style={{ display: 'inline-flex' }}>
+          THE DECISION
+        </div>
+        <h2 className="section-title anim">
+          A beautiful brochure or a <em>revenue-generating system</em>
+          <br />
+          that works as hard as you do?
+        </h2>
       </div>
-      <h2 className="anim">
-        A beautiful brochure — or a <em>revenue-generating system</em>
-        <br />
-        that works as hard as you do?
-      </h2>
       <p className="sub anim">
         The businesses that win the next five years will be the ones whose websites sell for them. See yours,
         live, in 15 minutes.

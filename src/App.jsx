@@ -175,8 +175,11 @@ function App() {
           loop
           muted
           playsInline
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
         >
-          <source src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777359747/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777901248/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1_1_tied9v.mp4" type="video/mp4" />
         </video>
         <Scene isActive={current === 0} className="scene-hero" animationType="hero">
           <HeroScene />
@@ -206,7 +209,7 @@ function App() {
           <CTAScene />
         </Scene>
 
-        <ChatDemo isHeroMode={current === 0} messages={messages} leadStatus={leadStatus} />
+        <ChatDemo isHeroMode={current === 0} isHowMode={current === 5} isResultsMode={current === 4} messages={messages} leadStatus={leadStatus} />
       </div>
 
       <Controls

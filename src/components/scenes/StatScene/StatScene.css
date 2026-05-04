@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.scene-stat > .anim:first-child {
-  display: inline-flex;
+.scene-stat .header-row {
+  text-align: center;
   margin-bottom: 1rem;
 }
 

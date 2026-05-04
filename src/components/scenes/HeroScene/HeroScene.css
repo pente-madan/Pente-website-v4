@@ -13,8 +13,19 @@
   }
 }
 
-.scene-hero .anim:first-child {
+.scene-hero .header-row {
+  text-align: left;
   margin-bottom: 1.2rem;
+}
+
+.scene-hero .section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0.8rem 0 0;
+  font-variation-settings: 'opsz' 144;
 }
 
 .scene-hero h1 {
@@ -27,24 +38,28 @@
   font-variation-settings: 'opsz' 144;
 }
 
-.scene-hero h1 .word {
+.scene-hero h1 .word,
+.scene-hero .section-title .word {
   display: inline-block;
   will-change: opacity, transform;
 }
 
-.scene-hero h1 .italic {
+.scene-hero h1 .italic,
+.scene-hero .section-title .italic {
   font-style: italic;
   font-weight: 400;
   color: var(--amber);
 }
 
-.scene-hero h1 .strike {
+.scene-hero h1 .strike,
+.scene-hero .section-title .strike {
   position: relative;
   color: var(--ink-muted);
   font-style: italic;
 }
 
-.scene-hero h1 .strike::after {
+.scene-hero h1 .strike::after,
+.scene-hero .section-title .strike::after {
   content: '';
   position: absolute;
   left: -2%;

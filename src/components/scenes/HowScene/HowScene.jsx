@@ -11,7 +11,7 @@ const HowScene = () => {
     {
       num: '02',
       title: 'AI understands & qualifies',
-      desc: 'In real time, it identifies need, gauges intent, and surfaces relevant answers — no scripts.',
+      desc: 'In real time, it identifies need, gauges intent, and surfaces relevant answers no scripts.',
     },
     {
       num: '03',
@@ -21,12 +21,12 @@ const HowScene = () => {
     {
       num: '04',
       title: 'Data into one dashboard',
-      desc: 'Every conversation, lead, and outcome — clean, searchable, ready for your CRM.',
+      desc: 'Every conversation, lead, and outcome clean, searchable, ready for your CRM.',
     },
     {
       num: '05',
       title: 'Follow-ups on autopilot',
-      desc: 'Nurturing runs itself. Your team focuses on closing — not chasing.',
+      desc: 'Nurturing runs itself. Your team focuses on closing not chasing.',
     },
   ];
 

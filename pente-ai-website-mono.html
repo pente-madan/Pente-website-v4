@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pente Sites — Your 24/7 AI Sales Agent</title>
+<meta name="description" content="A website is no longer a page. It is a conversation that closes deals." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #fafafa;
+    --bg-3: #ffffff;
+    --ink: #000000;
+    --ink-dim: #555555;
+    --ink-muted: #999999;
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.18);
+    --amber: #000000;
+    --amber-glow: #444444;
+    --terracotta: #000000;
+    --serif: 'Fraunces', 'Times New Roman', serif;
+    --sans: 'Geist', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --nav-h: 70px;
+    --controls-h: 60px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 80% 50% at 80% 0%, rgba(0, 0, 0, 0.025), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(0, 0, 0, 0.025), transparent 60%);
+  }
+
+  /* ============== ANIMATED BACKGROUND BLOBS ============== */
+  .bg-blobs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    will-change: transform;
+  }
+
+  .blob-1 {
+    width: 50vw;
+    max-width: 620px;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.10);
+    top: -8%;
+    left: -8%;
+    animation: drift-1 28s ease-in-out infinite;
+  }
+
+  .blob-2 {
+    width: 42vw;
+    max-width: 520px;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.07);
+    bottom: -12%;
+    right: -6%;
+    animation: drift-2 36s ease-in-out infinite;
+  }
+
+  .blob-3 {
+    width: 32vw;
+    max-width: 420px;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.08);
+    top: 35%;
+    left: 38%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: drift-3 32s ease-in-out infinite, morph 18s ease-in-out infinite;
+  }
+
+  @keyframes drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%     { transform: translate(120px, 80px) scale(1.18); }
+    66%     { transform: translate(70px, 150px) scale(0.92); }
+  }
+
+  @keyframes drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%     { transform: translate(-130px, -90px) scale(1.10); }
+    66%     { transform: translate(-80px, -160px) scale(1.22); }
+  }
+
+  @keyframes drift-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%     { transform: translate(90px, -110px) scale(1.05); }
+    66%     { transform: translate(-70px, -50px) scale(1.28); }
+  }
+
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50%     { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+  }
+
+  ::selection { background: var(--ink); color: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============== NAV ============== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    padding: 0 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-mark {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--amber-glow), var(--terracotta) 70%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    position: relative;
+  }
+
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--bg);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  .logo em { font-style: italic; color: var(--ink-muted); }
+
+  .nav-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .nav-cta {
+    padding: 0.6rem 1.2rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); transform: translateY(-1px); }
+
+  @media (max-width: 800px) {
+    nav { padding: 0 1.25rem; }
+    .nav-tag { display: none; }
+  }
+
+  /* ============== PROGRESS BAR ============== */
+  .progress-bar {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    height: 2px;
+    display: flex;
+    gap: 3px;
+    padding: 0 2.5rem;
+    z-index: 99;
+    background: var(--bg);
+  }
+
+  .progress-segment {
+    flex: 1;
+    height: 100%;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-segment .fill {
+    position: absolute;
+    inset: 0;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .progress-segment.played .fill {
+    transform: scaleX(1);
+  }
+
+  .progress-segment.active .fill {
+    animation: fillBar var(--dur, 7s) linear forwards;
+  }
+
+  @keyframes fillBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .stage:hover ~ .progress-bar .progress-segment.active .fill,
+  .stage.paused ~ .progress-bar .progress-segment.active .fill {
+    animation-play-state: paused;
+  }
+
+  /* ============== STAGE ============== */
+  .stage {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    bottom: var(--controls-h);
+    overflow: hidden;
+  }
+
+  .scene {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2.5rem;
+  }
+
+  .scene.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .scene-inner {
+    width: 100%;
+    max-width: 1280px;
+  }
+
+  /* Animated entry items inside scene */
+  .scene .anim {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .scene.active .anim {
+    animation: animIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .scene.active .anim:nth-child(1) { animation-delay: 0.15s; }
+  .scene.active .anim:nth-child(2) { animation-delay: 0.30s; }
+  .scene.active .anim:nth-child(3) { animation-delay: 0.45s; }
+  .scene.active .anim:nth-child(4) { animation-delay: 0.60s; }
+  .scene.active .anim:nth-child(5) { animation-delay: 0.75s; }
+  .scene.active .anim:nth-child(6) { animation-delay: 0.90s; }
+
+  @keyframes animIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============== CONTROLS ============== */
+  .controls {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: var(--controls-h);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--line);
+  }
+
+  .scene-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .scene-label .num {
+    color: var(--amber);
+  }
+
+  .scene-label .title {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+
+  .scene-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .scene-dot {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line-strong);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    padding: 0;
+  }
+
+  .scene-dot:hover { background: var(--ink-dim); }
+  .scene-dot.active { background: var(--amber); width: 48px; }
+  .scene-dot.played { background: var(--ink); }
+
+  .play-pause {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .play-pause:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  @media (max-width: 700px) {
+    .controls { padding: 0 1.25rem; }
+    .scene-label .title { display: none; }
+    .scene-dot { width: 20px; }
+    .scene-dot.active { width: 32px; }
+  }
+
+  /* ============== TYPOGRAPHY ============== */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .display {
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .display em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  /* ============== SCENE 1: HERO ============== */
+  .scene-hero .grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* The hero text occupies the left column;
+     the right column is intentionally empty — the floating chat sits over it. */
+
+  @media (max-width: 1000px) {
+    .scene-hero .grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .scene-hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin: 1rem 0 1.5rem;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .scene-hero h1 .italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+  }
+
+  .scene-hero h1 .strike {
+    position: relative;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  .scene-hero h1 .strike::after {
+    content: '';
+    position: absolute;
+    left: -2%; right: -2%;
+    top: 52%;
+    height: 2px;
+    background: var(--terracotta);
+    transform: rotate(-2deg);
+  }
+
+  .scene-hero .sub {
+    font-size: 1.05rem;
+    color: var(--ink-dim);
+    max-width: 480px;
+    line-height: 1.55;
+    margin-bottom: 1.8rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.5rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1.5px var(--ink), 0 12px 32px -8px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ============== CHAT DEMO (PERSISTENT FLOATING) ============== */
+  .chat-demo {
+    position: absolute;
+    z-index: 5;
+    background: var(--bg-3);
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    padding: 1rem;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 20px 40px -20px rgba(0, 0, 0, 0.18),
+      0 8px 20px -8px rgba(0, 0, 0, 0.12);
+    /* Corner mode default (scenes 2+) */
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 320px;
+    transform: rotate(0deg);
+    transition: bottom 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                right 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hero mode when scene 1 is active */
+  .chat-demo.hero-mode {
+    top: 50%;
+    right: max(2.5rem, calc((100vw - 1280px) / 2 + 2.5rem));
+    bottom: auto;
+    width: min(440px, 40vw);
+    padding: 1.2rem;
+    transform: translateY(-50%) rotate(-1deg);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 30px 60px -25px rgba(0, 0, 0, 0.18),
+      0 10px 25px -10px rgba(0, 0, 0, 0.15);
+  }
+
+  .chat-demo.hero-mode:hover {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  /* Hide chat on small screens to avoid overlapping content */
+  @media (max-width: 900px) {
+    .chat-demo { display: none; }
+  }
+
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .chat-url {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .chat-url::before { content: '●'; color: #000; font-size: 0.6rem; }
+
+  .chat-status {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .pulse {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); }
+  }
+
+  .chat-stream {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
+    transition: min-height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Compact stream in corner mode — show latest msgs, clip older */
+  .chat-demo:not(.hero-mode) .chat-stream {
+    min-height: 0;
+    max-height: 130px;
+    overflow: hidden;
+    justify-content: flex-end;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 25%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 25%, #000 100%);
+  }
+
+  .chat-demo:not(.hero-mode) .msg {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .chat-demo:not(.hero-mode) .chat-header,
+  .chat-demo:not(.hero-mode) .chat-footer {
+    font-size: 0.65rem;
+  }
+
+  .msg {
+    max-width: 82%;
+    padding: 0.65rem 0.95rem;
+    border-radius: 14px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: msgIn 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .msg.bot {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg.user {
+    background: var(--ink);
+    color: var(--bg);
+    align-self: flex-end;
+    font-weight: 500;
+    border-bottom-right-radius: 4px;
+  }
+
+  .msg.typing {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    align-self: flex-start;
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 4px;
+  }
+
+  .typing span {
+    width: 6px; height: 6px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite;
+  }
+
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  @keyframes msgIn { to { opacity: 1; transform: translateY(0); } }
+
+  .chat-footer {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+  }
+
+  .chat-footer .lead-status {
+    color: #000;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 0.78rem;
+  }
+
+  /* ============== SCENE 2: 17 SEC ============== */
+  .scene-stat {
+    text-align: center;
+  }
+
+  .scene-stat .number {
+    font-family: var(--serif);
+    font-size: clamp(8rem, 22vw, 22rem);
+    line-height: 0.9;
+    font-weight: 300;
+    font-style: italic;
+    background: linear-gradient(180deg, #000 0%, #777 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.05em;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    margin: 1rem 0;
+  }
+
+  .scene-stat .number .unit {
+    font-size: 0.32em;
+    font-style: normal;
+    color: var(--ink-muted);
+    background: none;
+    -webkit-text-fill-color: var(--ink-muted);
+    margin-left: 0.2em;
+    font-family: var(--sans);
+  }
+
+  .scene-stat .caption {
+    font-size: 1.15rem;
+    color: var(--ink-dim);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .scene-stat .caption strong { color: var(--ink); font-weight: 500; }
+
+  /* ============== SCENE 3: GAP ============== */
+  .scene-gap .header-row {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.8vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-top: 0.8rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--amber); }
+
+  .gap-table { border-top: 1px solid var(--line-strong); }
+
+  .gap-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .gap-row.header > div {
+    padding: 0.9rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .gap-row.header { border-bottom: 1px solid var(--line-strong); }
+  .gap-row.header .left { color: var(--ink-muted); }
+  .gap-row.header .right { color: var(--amber); }
+
+  .gap-row .left,
+  .gap-row .right {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .gap-row .left {
+    color: var(--ink-muted);
+    border-right: 1px solid var(--line);
+    text-decoration: line-through;
+    text-decoration-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .gap-row .right {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 400;
+  }
+
+  .gap-row .right::before {
+    content: '→';
+    color: var(--amber);
+    font-family: var(--sans);
+    flex-shrink: 0;
+  }
+
+  /* ============== SCENE 4: SOLUTION ============== */
+  .scene-solution .header-row {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line-strong);
+    border: 1px solid var(--line-strong);
+  }
+
+  @media (max-width: 800px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .feature {
+    background: var(--bg-3);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+
+  .feature:hover { background: var(--bg); }
+
+  .feature .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .feature h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .feature h3 em { color: var(--amber); font-style: italic; }
+
+  .feature p {
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* ============== SCENE 5: RESULTS ============== */
+  .scene-results { text-align: center; }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 3rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (max-width: 800px) { .results-grid { grid-template-columns: 1fr; } }
+
+  .result {
+    padding: 3rem 2rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .result:last-child { border-right: none; }
+
+  @media (max-width: 800px) {
+    .result { border-right: none; border-bottom: 1px solid var(--line); }
+    .result:last-child { border-bottom: none; }
+  }
+
+  .result .big-num {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1;
+    color: var(--amber);
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.04em;
+  }
+
+  .result .big-num .small {
+    font-size: 0.4em;
+    color: var(--ink-dim);
+    margin-left: 0.1em;
+  }
+
+  .result .label {
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    color: var(--ink-dim);
+    line-height: 1.4;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============== SCENE 6: HOW ============== */
+  .scene-how .header-row {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+
+  .step {
+    background: var(--bg);
+    padding: 1.8rem 1.4rem;
+    transition: background 0.3s;
+  }
+
+  .step:hover { background: var(--bg-3); }
+
+  .step-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 2.5rem;
+    color: var(--amber);
+    line-height: 1;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.25;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .step-desc {
+    color: var(--ink-dim);
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  /* ============== SCENE 7: CTA ============== */
+  .scene-cta {
+    text-align: center;
+    position: relative;
+  }
+
+  .scene-cta::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.04), transparent 60%);
+    pointer-events: none;
+  }
+
+  .scene-cta .scene-inner { position: relative; z-index: 1; }
+
+  .scene-cta h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    margin: 1rem auto 0;
+  }
+
+  .scene-cta h2 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .scene-cta .sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-dim);
+    margin: 1.5rem auto 2.2rem;
+    max-width: 600px;
+  }
+
+  .cta-mega-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.3rem 2.3rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.30);
+  }
+
+  .cta-mega-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1.5px var(--ink), 0 25px 60px -10px rgba(0, 0, 0, 0.30);
+  }
+
+  .cta-fineprint {
+    margin-top: 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============== ANIMATED BACKGROUND ============== -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<!-- ============== NAV ============== -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark"></div>
+    pente<em>.ai</em>
+  </a>
+  <div class="nav-tag">PENTE SITES · AI FOR WORK</div>
+  <a href="#" class="nav-cta">Book demo →</a>
+</nav>
+
+<!-- ============== PROGRESS BAR ============== -->
+<div class="progress-bar" id="progress-bar">
+  <div class="progress-segment" data-dur="11000"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="6500"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="9000"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="9000"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="7500"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="9000"><div class="fill"></div></div>
+  <div class="progress-segment" data-dur="8000"><div class="fill"></div></div>
+</div>
+
+<!-- ============== STAGE ============== -->
+<div class="stage" id="stage">
+
+  <!-- SCENE 1: HERO -->
+  <section class="scene scene-hero active" data-title="The Pitch">
+    <div class="scene-inner">
+      <div class="grid">
+        <div>
+          <div class="eyebrow anim">PENTE SITES — AI FOR WORK</div>
+          <h1 class="anim">
+            A website is no longer<br>
+            <span class="strike">a page.</span><br>
+            It is a <span class="italic">conversation</span><br>
+            that closes deals.
+          </h1>
+          <p class="sub anim">
+            Your 24/7 AI sales agent. Engages every visitor, qualifies them in real time,
+            and turns existing traffic into pipeline.
+          </p>
+          <div class="anim">
+            <a href="#" class="btn-primary">
+              Book your 15-min demo
+              <svg width="16" height="11" viewBox="0 0 18 12" fill="none">
+                <path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 2: 17 SEC -->
+  <section class="scene scene-stat" data-title="The Quiet Leak">
+    <div class="scene-inner">
+      <div class="anim" style="display:inline-flex"><div class="eyebrow">THE QUIET LEAK</div></div>
+      <div class="number anim">17<span class="unit">sec</span></div>
+      <p class="caption anim">
+        The average time a visitor spends on your website before leaving — <strong>without ever raising a hand.</strong>
+        Most businesses don't have a traffic problem. They have a conversion problem.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCENE 3: GAP -->
+  <section class="scene scene-gap" data-title="The Gap">
+    <div class="scene-inner">
+      <div class="header-row">
+        <div class="anim" style="display:inline-flex"><div class="eyebrow">THE GAP</div></div>
+        <h2 class="section-title anim">
+          What you have today vs. what <em>Pente Sites</em> delivers tomorrow.
+        </h2>
+      </div>
+
+      <div class="gap-table anim">
+        <div class="gap-row header">
+          <div class="left">Today</div>
+          <div class="right">With Pente</div>
+        </div>
+        <div class="gap-row">
+          <div class="left">Static pages, no interaction</div>
+          <div class="right">Real-time conversational experience</div>
+        </div>
+        <div class="gap-row">
+          <div class="left">Passive contact forms</div>
+          <div class="right">Intelligent lead capture at every stage</div>
+        </div>
+        <div class="gap-row">
+          <div class="left">No visibility into visitor intent</div>
+          <div class="right">Full insights into who's ready to buy</div>
+        </div>
+        <div class="gap-row">
+          <div class="left">Manual qualification</div>
+          <div class="right">Automatic AI qualification</div>
+        </div>
+        <div class="gap-row">
+          <div class="left">Missed opportunities after hours</div>
+          <div class="right">Never sleeps — converts 24/7</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 4: SOLUTION -->
+  <section class="scene scene-solution" data-title="The Solution">
+    <div class="scene-inner">
+      <div class="header-row">
+        <div class="anim" style="display:inline-flex"><div class="eyebrow">THE SOLUTION</div></div>
+        <h2 class="section-title anim">
+          Your hardest-working <em>salesperson</em> — never off the clock.
+        </h2>
+      </div>
+
+      <div class="features-grid anim">
+        <div class="feature">
+          <div class="num">01 · CONVERSE</div>
+          <h3>Natural, plain-language <em>conversations</em></h3>
+          <p>No menus. No clunky scripts. Visitors talk to your site like they would to a person on your team — and get answers that actually help.</p>
+        </div>
+        <div class="feature">
+          <div class="num">02 · QUALIFY</div>
+          <h3>Instant answers and <em>smart qualification</em></h3>
+          <p>Pente identifies intent in seconds, asks the right follow-up questions, and separates serious buyers from window-shoppers automatically.</p>
+        </div>
+        <div class="feature">
+          <div class="num">03 · CAPTURE</div>
+          <h3>Lead capture that <em>actually captures</em></h3>
+          <p>Every meaningful interaction becomes a lead. Names, needs, timelines, budgets — collected naturally, nurtured automatically.</p>
+        </div>
+        <div class="feature">
+          <div class="num">04 · CLOSE</div>
+          <h3>Seamless booking and <em>purchase paths</em></h3>
+          <p>Hot leads get on your calendar in real time. Quiet leads get nurtured. Nothing slips through the cracks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 5: RESULTS -->
+  <section class="scene scene-results" data-title="Proven Results">
+    <div class="scene-inner">
+      <div class="anim" style="display:inline-flex"><div class="eyebrow">PROVEN RESULTS</div></div>
+      <h2 class="section-title anim" style="max-width:800px;margin:0.8rem auto 0;">
+        The numbers <em>don't</em> need a sales pitch.
+      </h2>
+
+      <div class="results-grid anim">
+        <div class="result">
+          <div class="big-num"><span data-count="3">0</span><span class="small">×</span></div>
+          <div class="label">More conversions from your existing traffic</div>
+        </div>
+        <div class="result">
+          <div class="big-num"><span data-count="70">0</span><span class="small">%</span></div>
+          <div class="label">Reduction in time spent on initial lead handling</div>
+        </div>
+        <div class="result">
+          <div class="big-num"><span data-count="10000">0</span><span class="small">+</span></div>
+          <div class="label">Visitors handled — zero extra headcount</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 6: HOW IT WORKS -->
+  <section class="scene scene-how" data-title="How It Works">
+    <div class="scene-inner">
+      <div class="header-row">
+        <div class="anim" style="display:inline-flex"><div class="eyebrow">HOW IT WORKS</div></div>
+        <h2 class="section-title anim">Five steps. <em>One</em> intelligent system.</h2>
+      </div>
+
+      <div class="steps anim">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Visitor lands</div>
+          <div class="step-desc">Pente AI starts a friendly, contextual conversation tailored to where they came from.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">AI understands & qualifies</div>
+          <div class="step-desc">In real time, it identifies need, gauges intent, and surfaces relevant answers — no scripts.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Hot leads route instantly</div>
+          <div class="step-desc">High-intent prospects get pushed straight to whoever closes the deal.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-title">Data into one dashboard</div>
+          <div class="step-desc">Every conversation, lead, and outcome — clean, searchable, ready for your CRM.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-title">Follow-ups on autopilot</div>
+          <div class="step-desc">Nurturing runs itself. Your team focuses on closing — not chasing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 7: CTA -->
+  <section class="scene scene-cta" data-title="The Decision">
+    <div class="scene-inner">
+      <div class="anim" style="display:inline-flex"><div class="eyebrow">THE DECISION</div></div>
+      <h2 class="anim">
+        A beautiful brochure — or a <em>revenue-generating system</em><br>that works as hard as you do?
+      </h2>
+      <p class="sub anim">
+        The businesses that win the next five years will be the ones whose websites sell for them.
+        See yours, live, in 15 minutes.
+      </p>
+      <div class="anim">
+        <a href="#" class="cta-mega-btn">
+          Book your personalized demo
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+            <path d="M1 7h17m0 0L13 1m5 6l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="cta-fineprint anim">15 MINUTES · ZERO OBLIGATION · BUILT FOR YOUR BUSINESS</div>
+    </div>
+  </section>
+
+  <!-- PERSISTENT FLOATING CHAT (lives outside scenes, positioned relative to stage) -->
+  <div class="chat-demo hero-mode" id="chat">
+    <div class="chat-header">
+      <div class="chat-url">www.your-site.com</div>
+      <div class="chat-status"><span class="pulse"></span>Pente AI · Live</div>
+    </div>
+    <div class="chat-stream" id="chat-stream"></div>
+    <div class="chat-footer">
+      <span>POWERED BY PENTE</span>
+      <span class="lead-status" id="lead-status">— intent detected</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============== CONTROLS ============== -->
+<div class="controls">
+  <div class="scene-label">
+    <span class="num" id="scene-num">01 / 07</span>
+    <span class="title" id="scene-title">The Pitch</span>
+  </div>
+
+  <div class="scene-dots" id="scene-dots"></div>
+
+  <button class="play-pause" id="play-pause" aria-label="Pause">
+    <svg id="icon-pause" width="12" height="14" viewBox="0 0 12 14" fill="none">
+      <rect x="1" y="1" width="3" height="12" fill="currentColor"/>
+      <rect x="8" y="1" width="3" height="12" fill="currentColor"/>
+    </svg>
+    <svg id="icon-play" width="12" height="14" viewBox="0 0 12 14" fill="none" style="display:none">
+      <path d="M1 1l10 6-10 6V1z" fill="currentColor"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  // ============== SCENE ROTATION ==============
+  const scenes = document.querySelectorAll('.scene');
+  const segments = document.querySelectorAll('.progress-segment');
+  const sceneNum = document.getElementById('scene-num');
+  const sceneTitle = document.getElementById('scene-title');
+  const dotsContainer = document.getElementById('scene-dots');
+  const stage = document.getElementById('stage');
+  const playPauseBtn = document.getElementById('play-pause');
+  const iconPause = document.getElementById('icon-pause');
+  const iconPlay = document.getElementById('icon-play');
+
+  let current = 0;
+  let isPaused = false;
+  let timer = null;
+  let pauseStart = null;
+  let pauseElapsed = 0;
+  let sceneStart = null;
+
+  // Build scene dots
+  scenes.forEach((scene, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'scene-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Scene ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+
+    // Set CSS duration on segments
+    segments[i].style.setProperty('--dur', segments[i].dataset.dur + 'ms');
+  });
+
+  const dots = dotsContainer.querySelectorAll('.scene-dot');
+
+  function pad(n) { return String(n + 1).padStart(2, '0'); }
+
+  function activate(idx) {
+    // Clear all
+    scenes.forEach(s => s.classList.remove('active'));
+    segments.forEach((s, i) => {
+      s.classList.remove('active');
+      // Reset fill animation
+      const fill = s.querySelector('.fill');
+      fill.style.animation = 'none';
+      fill.offsetHeight; // force reflow
+      fill.style.animation = '';
+
+      if (i < idx) s.classList.add('played');
+      else s.classList.remove('played');
+    });
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+      d.classList.toggle('played', i < idx);
+    });
+
+    // Activate current
+    scenes[idx].classList.add('active');
+    segments[idx].classList.add('active');
+
+    // Update label
+    sceneNum.textContent = `${pad(idx)} / ${pad(scenes.length - 1)}`;
+    sceneTitle.textContent = scenes[idx].dataset.title;
+
+    // Toggle chat between hero-mode (scene 0) and corner mode (scenes 1+)
+    const chatEl = document.getElementById('chat');
+    if (chatEl) chatEl.classList.toggle('hero-mode', idx === 0);
+
+    // Reset chat if going to scene 0
+    if (idx === 0) restartChat();
+
+    // Reset counters if results scene
+    if (scenes[idx].classList.contains('scene-results')) {
+      runCounters();
+    }
+
+    sceneStart = performance.now();
+    pauseElapsed = 0;
+  }
+
+  function nextScene() {
+    current = (current + 1) % scenes.length;
+    activate(current);
+    scheduleNext();
+  }
+
+  function scheduleNext() {
+    if (timer) clearTimeout(timer);
+    if (isPaused) return;
+    const dur = parseInt(segments[current].dataset.dur);
+    timer = setTimeout(nextScene, dur - pauseElapsed);
+  }
+
+  function goTo(idx) {
+    if (timer) clearTimeout(timer);
+    current = idx;
+    activate(current);
+    if (!isPaused) scheduleNext();
+  }
+
+  function pause() {
+    if (isPaused) return;
+    isPaused = true;
+    if (timer) clearTimeout(timer);
+    pauseStart = performance.now();
+    stage.classList.add('paused');
+    iconPause.style.display = 'none';
+    iconPlay.style.display = 'block';
+    playPauseBtn.setAttribute('aria-label', 'Play');
+  }
+
+  function resume() {
+    if (!isPaused) return;
+    isPaused = false;
+    pauseElapsed += performance.now() - pauseStart;
+    stage.classList.remove('paused');
+    iconPause.style.display = 'block';
+    iconPlay.style.display = 'none';
+    playPauseBtn.setAttribute('aria-label', 'Pause');
+    scheduleNext();
+  }
+
+  playPauseBtn.addEventListener('click', () => {
+    if (isPaused) resume();
+    else pause();
+  });
+
+  // Pause when hovering stage
+  stage.addEventListener('mouseenter', () => {
+    if (!isPaused) {
+      stage.classList.add('paused');
+      if (timer) clearTimeout(timer);
+      pauseStart = performance.now();
+      pauseElapsed += 0; // keep elapsed
+    }
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    if (!isPaused && pauseStart) {
+      pauseElapsed += performance.now() - pauseStart;
+      pauseStart = null;
+      stage.classList.remove('paused');
+      const dur = parseInt(segments[current].dataset.dur);
+      timer = setTimeout(nextScene, Math.max(500, dur - pauseElapsed));
+    }
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') goTo((current + 1) % scenes.length);
+    else if (e.key === 'ArrowLeft') goTo((current - 1 + scenes.length) % scenes.length);
+    else if (e.key === ' ') { e.preventDefault(); isPaused ? resume() : pause(); }
+  });
+
+  // ============== CHAT DEMO ==============
+  const chatStream = document.getElementById('chat-stream');
+  const leadStatus = document.getElementById('lead-status');
+  const conversation = [
+    { type: 'bot', text: "Hi 👋 I see you're checking out our pricing — want me to find the right plan for your team size?" },
+    { type: 'user', text: "Sure, we're a 12-person agency." },
+    { type: 'bot', text: "Perfect. Are you mostly looking to capture leads, or close them through the site?" },
+    { type: 'user', text: "Both honestly. We get traffic but it doesn't convert." },
+    { type: 'bot', text: "Got it — exactly what Pente fixes. I'll book a 15-min walkthrough — what's your email?" },
+    { type: 'user', text: "alex@studiowest.com" },
+    { type: 'bot', text: "Booked for Thursday 2pm. Calendar invite sent. Talk soon, Alex ✨" },
+  ];
+
+  let convoIndex = 0;
+  let chatTimers = [];
+
+  function clearChatTimers() {
+    chatTimers.forEach(t => clearTimeout(t));
+    chatTimers = [];
+  }
+
+  function scrollChatToBottom() {
+    if (chatStream) {
+      chatStream.scrollTop = chatStream.scrollHeight;
+    }
+  }
+
+  function addMessage(msg) {
+    if (msg.type === 'bot') {
+      const typing = document.createElement('div');
+      typing.className = 'msg typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      chatStream.appendChild(typing);
+      scrollChatToBottom();
+
+      chatTimers.push(setTimeout(() => {
+        typing.remove();
+        const m = document.createElement('div');
+        m.className = 'msg bot';
+        m.textContent = msg.text;
+        chatStream.appendChild(m);
+        scrollChatToBottom();
+        next();
+      }, 900));
+    } else {
+      const m = document.createElement('div');
+      m.className = 'msg user';
+      m.textContent = msg.text;
+      chatStream.appendChild(m);
+      scrollChatToBottom();
+      next();
+    }
+  }
+
+  function next() {
+    convoIndex++;
+    if (convoIndex >= conversation.length) {
+      leadStatus.textContent = '✓ lead captured · qualified · booked';
+      return;
+    }
+    chatTimers.push(setTimeout(() => addMessage(conversation[convoIndex]), 600));
+  }
+
+  function restartChat() {
+    clearChatTimers();
+    chatStream.innerHTML = '';
+    convoIndex = 0;
+    leadStatus.textContent = '— intent detected';
+    chatTimers.push(setTimeout(() => addMessage(conversation[0]), 800));
+  }
+
+  // ============== COUNT UP ==============
+  function runCounters() {
+    document.querySelectorAll('.scene-results [data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      const duration = 1400;
+      const start = performance.now();
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(eased * target);
+        el.textContent = target >= 1000 ? value.toLocaleString() : value;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target >= 1000 ? target.toLocaleString() : target;
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // ============== KICK OFF ==============
+  activate(0);
+  scheduleNext();
+
+</script>
+</body>
+</html>

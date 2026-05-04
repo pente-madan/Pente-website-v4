@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import './Controls.css';
 
-const Controls = ({ current, total, sceneTitle, isPaused, onTogglePlay, onSceneClick }) => {
+const Controls = ({ current, total, sceneTitle, onSceneClick }) => {
   const pad = (n) => String(n + 1).padStart(2, '0');
   const playPauseRef = useRef(null);
   const dotsRef = useRef([]);

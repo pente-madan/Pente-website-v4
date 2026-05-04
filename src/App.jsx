@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Navigation from './components/layout/Navigation';
 import ProgressBar from './components/layout/ProgressBar';
 import Controls from './components/layout/Controls';
+import VideoBackground from './components/VideoBackground/VideoBackground';
 import BackgroundBlobs from './components/BackgroundBlobs/BackgroundBlobs';
 import ChatDemo from './components/ChatDemo/ChatDemo';
 import Scene from './components/Scene/Scene';
@@ -12,7 +13,7 @@ import SolutionScene from './components/scenes/SolutionScene/SolutionScene';
 import ResultsScene from './components/scenes/ResultsScene/ResultsScene';
 import HowScene from './components/scenes/HowScene/HowScene';
 import CTAScene from './components/scenes/CTAScene/CTAScene';
-import { useSceneRotation } from './hooks/useSceneRotation';
+import { useScrollNavigation } from './hooks/useScrollNavigation';
 import { useChatSimulation } from './hooks/useChatSimulation';
 import './App.css';
 
@@ -29,11 +30,7 @@ const SCENE_TITLES = [
 ];
 
 function App() {
-  const { current, isPaused, goToScene, togglePause, setHover } = useSceneRotation({
-    scenesCount: 7,
-    durations: SCENE_DURATIONS,
-  });
-
+  const { current, goToScene } = useScrollNavigation(7);
   const { messages, leadStatus } = useChatSimulation(current);
   const scrollTimeout = useRef(null);
   const isScrolling = useRef(false);
@@ -159,9 +156,10 @@ function App() {
 
   return (
     <div className="App">
+      <VideoBackground />
       <BackgroundBlobs />
       <Navigation />
-      <ProgressBar current={current} durations={SCENE_DURATIONS} isPaused={isPaused} />
+      <ProgressBar current={current} />
 
       <div
         className={`stage ${isPaused ? 'paused' : ''}`}
@@ -212,8 +210,6 @@ function App() {
         current={current}
         total={7}
         sceneTitle={SCENE_TITLES[current]}
-        isPaused={isPaused}
-        onTogglePlay={togglePause}
         onSceneClick={goToScene}
       />
     </div>

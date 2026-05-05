@@ -1,10 +1,18 @@
 .video-background {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3; /* Move behind everything to prevent interference */
   overflow: hidden;
   pointer-events: none;
   background: #ffffff;
+  /* Force hardware acceleration for the container */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  /* Prevent layout shifts */
+  contain: layout style paint;
+  /* Ensure it's not affected by scene changes */
+  isolation: isolate;
 }
 
 .video-background__video {
@@ -15,9 +23,23 @@
   min-height: 100%;
   width: auto;
   height: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   object-fit: cover;
-  opacity: 0.4;
+  opacity: 0.35;
+  /* Maximum performance optimizations */
+  will-change: transform;
+  backface-visibility: hidden;
+  /* GPU acceleration for all browsers */
+  -webkit-transform: translate(-50%, -50%) translateZ(0);
+  -moz-transform: translate(-50%, -50%) translateZ(0);
+  -ms-transform: translate(-50%, -50%) translateZ(0);
+  -o-transform: translate(-50%, -50%) translateZ(0);
+  /* Prevent browser optimizations that might pause video */
+  image-rendering: optimizeQuality;
+  /* Ensure video stays in GPU memory */
+  contain: layout style paint;
+  /* Prevent any interference from parent elements */
+  isolation: isolate;
 }
 
 .video-background__overlay {
@@ -25,15 +47,53 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.45) 50%,
-    rgba(255, 255, 255, 0.55) 100%
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.6) 100%
   );
   pointer-events: none;
+  /* Force hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Prevent layout shifts */
+  contain: layout style paint;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .video-background__video {
     display: none;
   }
+}
+
+/* Hide native video controls completely */
+.video-background__video::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-background__video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.video-background__video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.video-background__video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Prevent any touch or interaction interference */
+.video-background__video {
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Ensure video stays behind all content */
+.video-background {
+  z-index: -3 !important;
 }

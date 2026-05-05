@@ -73,7 +73,7 @@ const VideoBackground = memo(() => {
         }}
       >
         <source
-          src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777359747/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1.mp4"
+          src="/videos/background-video.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.

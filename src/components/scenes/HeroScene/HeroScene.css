@@ -1,65 +1,43 @@
 .scene-hero .grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.4fr 0.6fr;
   gap: 4rem;
   align-items: center;
-  margin-top: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1000px) {
   .scene-hero .grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    max-width: 100%;
   }
-}
-
-.scene-hero .header-row {
-  text-align: left;
-  margin-bottom: 1.2rem;
-}
-
-.scene-hero .section-title {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  margin: 0.8rem 0 0;
-  font-variation-settings: 'opsz' 144;
 }
 
 .scene-hero h1 {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
-  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 0.95;
   letter-spacing: -0.03em;
-  margin: 0 0 2rem;
+  margin: 1rem 0 1.5rem;
   font-variation-settings: 'opsz' 144;
 }
 
-.scene-hero h1 .word,
-.scene-hero .section-title .word {
-  display: inline-block;
-  will-change: opacity, transform;
-}
-
-.scene-hero h1 .italic,
-.scene-hero .section-title .italic {
+.scene-hero h1 .italic {
   font-style: italic;
   font-weight: 400;
   color: var(--amber);
 }
 
-.scene-hero h1 .strike,
-.scene-hero .section-title .strike {
+.scene-hero h1 .strike {
   position: relative;
   color: var(--ink-muted);
   font-style: italic;
 }
 
-.scene-hero h1 .strike::after,
-.scene-hero .section-title .strike::after {
+.scene-hero h1 .strike::after {
   content: '';
   position: absolute;
   left: -2%;
@@ -75,5 +53,5 @@
   color: var(--ink-dim);
   max-width: 480px;
   line-height: 1.55;
-  margin: 0 0 2.2rem;
+  margin-bottom: 1.8rem;
 }

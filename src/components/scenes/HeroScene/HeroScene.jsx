@@ -1,65 +1,20 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
+import Eyebrow from '../../common/Eyebrow';
 import Button from '../../common/Button';
 import './HeroScene.css';
 
 const HeroScene = () => {
-  const wordsRef = useRef([]);
-
-  useEffect(() => {
-    // Animate words appearing one by one
-    gsap.fromTo(
-      wordsRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: 'power2.out',
-        delay: 0.3,
-      }
-    );
-  }, []);
-
-  const headingWords = [
-    { text: 'A', break: false },
-    { text: 'website', break: false },
-    { text: 'is', break: false },
-    { text: 'no', break: false },
-    { text: 'longer', break: true },
-    { text: 'a page.', break: true, strike: true },
-    { text: 'It', break: false },
-    { text: 'is', break: false },
-    { text: 'a', break: false },
-    { text: 'conversation', break: true, italic: true },
-    { text: 'that', break: false },
-    { text: 'closes', break: false },
-    { text: 'deals.', break: false },
-  ];
-
   return (
     <div className="grid">
       <div>
-        <div className="header-row">
-          <div className="anim" style={{ display: 'inline-flex' }}>
-            THE PITCH
-          </div>
-          <h1 className="section-title anim">
-            {headingWords.map((word, idx) => (
-              <React.Fragment key={idx}>
-                <span
-                  ref={(el) => (wordsRef.current[idx] = el)}
-                  className={`word ${word.strike ? 'strike' : ''} ${word.italic ? 'italic' : ''}`}
-                >
-                  {word.text}
-                </span>
-                {word.break && <br />}
-                {!word.break && ' '}
-              </React.Fragment>
-            ))}
-          </h1>
+        <div className="anim" style={{ display: 'inline-flex' }}>
+          <Eyebrow>PENTE SITES — AI FOR WORK</Eyebrow>
         </div>
+        <h1 className="anim">
+          A website is no longer <span className="strike">a page.</span><br />
+          It is a <span className="italic">conversation</span><br />
+          that closes deals.
+        </h1>
         <p className="sub anim">
           Your 24/7 AI sales agent. Engages every visitor, qualifies them in real time, and turns existing
           traffic into pipeline.

@@ -19,6 +19,10 @@
   transform: translateZ(0);
   will-change: transform;
   pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
 }
 
 .stage.paused .progress-segment.active .fill {

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import Navigation from './components/layout/Navigation';
 import ProgressBar from './components/layout/ProgressBar';
 import Controls from './components/layout/Controls';
-import VideoBackground from './components/VideoBackground/VideoBackground';
 import BackgroundBlobs from './components/BackgroundBlobs/BackgroundBlobs';
 import ChatDemo from './components/ChatDemo/ChatDemo';
 import Scene from './components/Scene/Scene';
@@ -159,7 +158,6 @@ function App() {
 
   return (
     <div className="App">
-      <VideoBackground />
       <BackgroundBlobs />
       <Navigation />
       <ProgressBar current={current} />
@@ -178,8 +176,12 @@ function App() {
           preload="auto"
           disablePictureInPicture
           disableRemotePlayback
+          webkit-playsinline="true"
         >
-          <source src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777901248/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1_1_tied9v.mp4" type="video/mp4" />
+          <source 
+            src="https://res.cloudinary.com/drhyerkn7/video/upload/v1777901248/CleanShot_2025-10-11_at_17.12.46_t4bh4w_wqvvo1_1_tied9v.mp4" 
+            type="video/mp4" 
+          />
         </video>
         <Scene isActive={current === 0} className="scene-hero" animationType="hero">
           <HeroScene />

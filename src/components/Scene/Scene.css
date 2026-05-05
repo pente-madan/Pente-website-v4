@@ -7,7 +7,9 @@
   align-items: center;
   justify-content: center;
   padding: 2rem 2.5rem;
-  will-change: opacity;
+  will-change: opacity, transform;
+  transform: translateY(100vh);
+  perspective: 1000px;
 }
 
 .scene.active {

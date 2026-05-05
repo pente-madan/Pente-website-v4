@@ -12,7 +12,7 @@
               0 8px 20px -8px rgba(0, 0, 0, 0.2),
               inset 0 0 20px rgba(255, 255, 255, 0.03);
   bottom: 0.75rem;
-  right: 1rem;
+  right: 2rem;
   width: 280px;
   transform: rotate(0deg) scale(0.92);
   transition: bottom 0.7s cubic-bezier(0.4, 0, 0.2, 1), right 0.7s cubic-bezier(0.4, 0, 0.2, 1),
@@ -22,7 +22,7 @@
 
 .chat-demo.hero-mode {
   top: 54%;
-  right: max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem));
+  right: 2.5rem;
   bottom: auto;
   width: min(580px, 45vw);
   padding: 0.85rem;
@@ -39,7 +39,7 @@
 
 .chat-demo.how-mode {
   width: 380px;
-  right: 0.75rem;
+  right: 2rem;
   bottom: 0.5rem;
   padding: 0.4rem;
   transform: scale(0.75);
@@ -52,7 +52,7 @@
 
 .chat-demo.results-mode {
   width: 380px;
-  right: 0.75rem;
+  right: 2rem;
   bottom: 0.5rem;
   padding: 0.4rem;
   transform: scale(0.75);

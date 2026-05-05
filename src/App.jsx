@@ -59,11 +59,16 @@ function App() {
   // Scroll navigation
   useEffect(() => {
     const handleWheel = (e) => {
+      console.log('Wheel event detected', e.deltaY); // Debug log
+      
       // Prevent default scroll behavior
       e.preventDefault();
 
       // If already scrolling, ignore
-      if (isScrolling.current) return;
+      if (isScrolling.current) {
+        console.log('Already scrolling, ignoring'); // Debug log
+        return;
+      }
 
       // Clear any existing timeout
       if (scrollTimeout.current) {
@@ -75,14 +80,18 @@ function App() {
       // Determine scroll direction (support both deltaY and deltaX)
       const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       
+      console.log('Delta:', delta, 'Current scene:', current); // Debug log
+      
       if (delta > 0) {
         // Scroll down/right - next scene
         if (current < 6) {
+          console.log('Going to next scene:', current + 1); // Debug log
           goToScene(current + 1);
         }
       } else if (delta < 0) {
         // Scroll up/left - previous scene
         if (current > 0) {
+          console.log('Going to previous scene:', current - 1); // Debug log
           goToScene(current - 1);
         }
       }
@@ -90,9 +99,12 @@ function App() {
       // Reset scrolling flag after a delay
       scrollTimeout.current = setTimeout(() => {
         isScrolling.current = false;
-      }, 600);
+        console.log('Scroll lock released'); // Debug log
+      }, 1000);
     };
 
+    console.log('Setting up wheel listeners'); // Debug log
+    
     // Add wheel event listener with passive: false to allow preventDefault
     window.addEventListener('wheel', handleWheel, { passive: false });
     
@@ -100,6 +112,7 @@ function App() {
     window.addEventListener('mousewheel', handleWheel, { passive: false });
 
     return () => {
+      console.log('Cleaning up wheel listeners'); // Debug log
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('mousewheel', handleWheel);
       if (scrollTimeout.current) {
@@ -183,6 +196,7 @@ function App() {
             type="video/mp4" 
           />
         </video>
+        <div className="video-overlay"></div>
         <Scene isActive={current === 0} className="scene-hero" animationType="hero">
           <HeroScene />
         </Scene>

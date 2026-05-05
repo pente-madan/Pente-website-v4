@@ -17,7 +17,7 @@ const GapScene = () => {
           THE GAP
         </div>
         <h2 className="section-title anim">
-          What you have today vs what Pente Sites delivers tomorrow.
+          What you have today <span className="vs">vs</span> what Pente Sites delivers tomorrow.
         </h2>
       </div>
 

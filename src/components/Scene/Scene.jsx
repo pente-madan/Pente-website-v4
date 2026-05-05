@@ -13,12 +13,71 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
       animElementsRef.current = Array.from(animElements);
 
       if (isActive) {
-        // Animate scene in
-        gsap.to(scene, {
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out',
-        });
+        // Different scene container transitions based on type
+        switch (animationType) {
+          case 'hero':
+            // Slide from bottom
+            gsap.fromTo(scene, 
+              { opacity: 0, y: '100vh' },
+              { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
+            );
+            break;
+          
+          case 'stat':
+            // Scale zoom in
+            gsap.fromTo(scene,
+              { opacity: 0, scale: 0.7, y: 0 },
+              { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.2)' }
+            );
+            break;
+          
+          case 'gap':
+            // Slide from right
+            gsap.fromTo(scene,
+              { opacity: 0, x: '100vw', y: 0 },
+              { opacity: 1, x: 0, y: 0, duration: 0.9, ease: 'power3.inOut' }
+            );
+            break;
+          
+          case 'solution':
+            // Slide from left with rotation
+            gsap.fromTo(scene,
+              { opacity: 0, x: '-100vw', rotationY: -20, y: 0 },
+              { opacity: 1, x: 0, rotationY: 0, y: 0, duration: 0.9, ease: 'power2.out' }
+            );
+            break;
+          
+          case 'results':
+            // Zoom in with bounce
+            gsap.fromTo(scene,
+              { opacity: 0, scale: 0.5, y: 0 },
+              { opacity: 1, scale: 1, y: 0, duration: 1, ease: 'elastic.out(1, 0.6)' }
+            );
+            break;
+          
+          case 'how':
+            // Slide from top
+            gsap.fromTo(scene,
+              { opacity: 0, y: '-100vh' },
+              { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
+            );
+            break;
+          
+          case 'cta':
+            // Dramatic scale with spring
+            gsap.fromTo(scene,
+              { opacity: 0, scale: 0.3, y: 0 },
+              { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: 'back.out(2)' }
+            );
+            break;
+          
+          default:
+            // Default: vertical slide
+            gsap.fromTo(scene,
+              { opacity: 0, y: '100vh' },
+              { opacity: 1, y: 0, duration: 0.8, ease: 'power3.inOut' }
+            );
+        }
 
         // Different animations based on type
         switch (animationType) {
@@ -180,12 +239,88 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             );
         }
       } else {
-        // Animate scene out
-        gsap.to(scene, {
-          opacity: 0,
-          duration: 0.4,
-          ease: 'power2.in',
-        });
+        // Different scene exit animations based on type
+        switch (animationType) {
+          case 'hero':
+            // Slide up and fade
+            gsap.to(scene, {
+              opacity: 0,
+              y: '-50vh',
+              duration: 0.6,
+              ease: 'power3.in',
+            });
+            break;
+          
+          case 'stat':
+            // Scale down
+            gsap.to(scene, {
+              opacity: 0,
+              scale: 0.8,
+              duration: 0.5,
+              ease: 'power2.in',
+            });
+            break;
+          
+          case 'gap':
+            // Slide left
+            gsap.to(scene, {
+              opacity: 0,
+              x: '-100vw',
+              duration: 0.6,
+              ease: 'power3.in',
+            });
+            break;
+          
+          case 'solution':
+            // Slide right with rotation
+            gsap.to(scene, {
+              opacity: 0,
+              x: '100vw',
+              rotationY: 20,
+              duration: 0.6,
+              ease: 'power2.in',
+            });
+            break;
+          
+          case 'results':
+            // Zoom out
+            gsap.to(scene, {
+              opacity: 0,
+              scale: 0.6,
+              duration: 0.5,
+              ease: 'power2.in',
+            });
+            break;
+          
+          case 'how':
+            // Slide down
+            gsap.to(scene, {
+              opacity: 0,
+              y: '100vh',
+              duration: 0.6,
+              ease: 'power3.in',
+            });
+            break;
+          
+          case 'cta':
+            // Scale down dramatically
+            gsap.to(scene, {
+              opacity: 0,
+              scale: 0.4,
+              duration: 0.6,
+              ease: 'back.in(1.5)',
+            });
+            break;
+          
+          default:
+            // Default: slide up
+            gsap.to(scene, {
+              opacity: 0,
+              y: '-100vh',
+              duration: 0.6,
+              ease: 'power3.inOut',
+            });
+        }
       }
     }
   }, [isActive, animationType]);

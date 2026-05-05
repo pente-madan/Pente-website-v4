@@ -1,5 +1,4 @@
 import React from 'react';
-import Eyebrow from '../../common/Eyebrow';
 import Button from '../../common/Button';
 import './HeroScene.css';
 
@@ -7,14 +6,16 @@ const HeroScene = () => {
   return (
     <div className="grid">
       <div>
-        <div className="anim" style={{ display: 'inline-flex' }}>
-          <Eyebrow>PENTE SITES — AI FOR WORK</Eyebrow>
+        <div className="header-row">
+          <div className="anim" style={{ display: 'inline-flex' }}>
+            THE PITCH
+          </div>
+          <h1 className="section-title anim">
+            A website is no longer <span className="strike">a page.</span><br />
+            It is a <span className="italic">conversation that</span><br />
+             closes deals.
+          </h1>
         </div>
-        <h1 className="anim">
-          A website is no longer <span className="strike">a page.</span><br />
-          It is a <span className="italic">conversation</span><br />
-          that closes deals.
-        </h1>
         <p className="sub anim">
           Your 24/7 AI sales agent. Engages every visitor, qualifies them in real time, and turns existing
           traffic into pipeline.

@@ -6,7 +6,7 @@ const StatScene = () => {
     <>
       <div className="header-row">
         <div className="anim" style={{ display: 'inline-flex' }}>
-          THE PROBLEM
+          THE QUICK LEAK
         </div>
         <div className="number anim">
           17<span className="unit">sec</span>

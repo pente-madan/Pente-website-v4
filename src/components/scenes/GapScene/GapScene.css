@@ -13,9 +13,9 @@
   margin-top: 0.8rem;
 }
 
-.section-title em {
+.section-title .vs {
+  color: var(--ink-muted);
   font-style: italic;
-  color: var(--amber);
 }
 
 .gap-comparison {

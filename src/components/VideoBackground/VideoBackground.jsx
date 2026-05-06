@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, memo } from 'react';
-import './VideoBackground.css';
+import { useTheme } from '../../hooks/useTheme';
 
 const VideoBackground = memo(() => {
   const videoRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -51,35 +52,56 @@ const VideoBackground = memo(() => {
     }
   }, []);
 
+  // Change video source based on theme
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const videoSource = theme === 'light' ? 'https://res.cloudinary.com/drhyerkn7/video/upload/v1778051687/CleanShot_2025-09-24_at_18.06.51_h8y6oa_aodakz.mp4' : '/videos/background-video.mp4';
+      video.src = videoSource;
+      video.load(); // Reload the video with new source
+      
+      // Ensure playback continues after source change
+      const ensurePlayback = async () => {
+        try {
+          if (video.paused || video.ended) {
+            await video.play();
+          }
+        } catch (error) {
+          // Silently handle autoplay restrictions
+        }
+      };
+      
+      ensurePlayback();
+    }
+  }, [theme]);
+
   return (
-    <div className="video-background">
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="video-background__video"
-        style={{
-          willChange: 'transform',
-          backfaceVisibility: 'hidden',
-          transform: 'translateZ(0)',
-          // Ensure GPU acceleration
-          WebkitTransform: 'translateZ(0)',
-          MozTransform: 'translateZ(0)',
-          msTransform: 'translateZ(0)',
-          OTransform: 'translateZ(0)'
-        }}
-      >
-        <source
-          src="/videos/background-video.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      <div className="video-background__overlay"></div>
-    </div>
+    <video
+      ref={videoRef}
+      className="background-video"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
+      style={{
+        willChange: 'transform',
+        backfaceVisibility: 'hidden',
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
+        MozTransform: 'translateZ(0)',
+        msTransform: 'translateZ(0)',
+        OTransform: 'translateZ(0)'
+      }}
+    >
+      <source
+        src={theme === 'light' ? 'https://res.cloudinary.com/drhyerkn7/video/upload/v1778051687/CleanShot_2025-09-24_at_18.06.51_h8y6oa_aodakz.mp4' : '/videos/background-video.mp4'}
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
   );
 });
 

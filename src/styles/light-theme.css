@@ -27,6 +27,7 @@
 
   /* GLASS */
   --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-bg-hover: rgba(255, 255, 255, 0.95);
 
   /* SHADOWS */
   --shadow-soft: 0 8px 20px -8px rgba(0, 0, 0, 0.12);
@@ -183,7 +184,7 @@
 }
 
 .light-theme .video-overlay {
-  display: none !important;
+  background: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* Adjust blobs for light theme */

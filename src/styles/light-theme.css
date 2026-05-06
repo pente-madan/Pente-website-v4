@@ -56,17 +56,8 @@
   inset: 0;
   background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778058092/tsvdbfhdsfj_pfr5ub.png') no-repeat center 60%;
   background-size: cover;
-  opacity: 0.6;
+  opacity: 0.8;
   z-index: -10;
-  pointer-events: none;
-}
-
-.light-theme::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.3);
-  z-index: -5;
   pointer-events: none;
 }
 
@@ -304,14 +295,14 @@
 
 /* Gap Scene */
 .light-theme .gap-card {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .gap-card:hover {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: #ffffff !important;
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
@@ -380,14 +371,14 @@
 
 /* How Scene */
 .light-theme .step {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .step:hover {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: #ffffff !important;
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
@@ -429,14 +420,14 @@
 
 /* Solution Scene */
 .light-theme .feature {
-  background: rgba(0, 0, 0, 0.02) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .feature:hover {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: #ffffff !important;
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;

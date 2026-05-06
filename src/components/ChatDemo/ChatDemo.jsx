@@ -52,7 +52,7 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages, leadStatus }
   return (
     <div ref={chatRef} className={chatClasses}>
       <div className="chat-header">
-        <div className="chat-url">www.your-site.com</div>
+        <div className="chat-url">www.pente.ai</div>
         <div className="chat-status">
           <span className="pulse"></span>Pente AI · Live
         </div>

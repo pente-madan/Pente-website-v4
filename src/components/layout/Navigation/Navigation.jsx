@@ -9,7 +9,14 @@ const Navigation = () => {
   return (
     <nav className="nav">
       <a href="/" className="logo">
-        <img src="https://res.cloudinary.com/drhyerkn7/image/upload/v1777878548/Dark_theme_logo_cnaxxz.png" alt="Pente Sites Logo" className="logo-image" />
+        <img 
+          src={theme === 'light' 
+            ? "https://res.cloudinary.com/drhyerkn7/image/upload/v1778051556/Light_theme_logo_joroju.png"
+            : "https://res.cloudinary.com/drhyerkn7/image/upload/v1777878548/Dark_theme_logo_cnaxxz.png"
+          } 
+          alt="Pente Sites Logo" 
+          className="logo-image" 
+        />
           Pente <span className="sites">Sites</span>
       </a>
       <div className="nav-tag">PENTE SITES · AI FOR WORK</div>

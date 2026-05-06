@@ -53,8 +53,19 @@
   content: '';
   position: fixed;
   inset: 0;
-  background: var(--bg);
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778058092/tsvdbfhdsfj_pfr5ub.png') no-repeat center 60%;
+  background-size: cover;
+  opacity: 0.6;
   z-index: -10;
+  pointer-events: none;
+}
+
+.light-theme::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: -5;
   pointer-events: none;
 }
 
@@ -487,7 +498,7 @@
 /* Control Buttons */
 .light-theme .play-pause,
 .light-theme .nav-arrow {
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -495,6 +506,7 @@
 .light-theme .nav-arrow:hover {
   background: rgba(0, 0, 0, 0.05) !important;
   border-color: rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;
 }
 
 /* Dots */
@@ -504,6 +516,24 @@
 
 .light-theme .dot.active {
   background: var(--accent) !important;
+}
+
+/* Scene Dots */
+.light-theme .scene-dot {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.light-theme .scene-dot:hover {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.light-theme .scene-dot.active {
+  background: var(--accent) !important;
+  height: 55px !important;
+}
+
+.light-theme .scene-dot.played {
+  background: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Eyebrow */

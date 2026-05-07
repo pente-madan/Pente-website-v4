@@ -1,7 +1,21 @@
 /* =========================================================
-   PENTE LIGHT THEME OVERRIDE
-   ONLY COLORS + SURFACES
+   DARK THEME BACKGROUND IMAGE
    ========================================================= */
+
+body:not(.light-theme) {
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778068208/44444_cmwn3v.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body:not(.light-theme)::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -5;
+  pointer-events: none;
+}
 
 .light-theme {
   /* BACKGROUNDS */
@@ -54,10 +68,19 @@
   content: '';
   position: fixed;
   inset: 0;
-  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778058092/tsvdbfhdsfj_pfr5ub.png') no-repeat center 60%;
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778070559/444445555_fk08fq.png') no-repeat center 60%;
   background-size: cover;
   opacity: 0.8;
   z-index: -10;
+  pointer-events: none;
+}
+
+.light-theme::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: -5;
   pointer-events: none;
 }
 
@@ -180,13 +203,26 @@
   border-color: var(--border) !important;
 }
 
-/* Hide video background in light theme */
-.light-theme .background-video {
+/* Hide global overlays in light theme */
+.light-theme body::before {
+  display: none !important;
+}
+
+.light-theme body::after {
   display: none !important;
 }
 
 .light-theme .video-overlay {
   background: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Hide video background in dark theme (using static image instead) */
+body:not(.light-theme) .background-video {
+  display: none !important;
+}
+
+body:not(.light-theme) .video-overlay {
+  display: none !important;
 }
 
 /* Adjust blobs for light theme */
@@ -238,10 +274,6 @@
 
 .light-theme .chat-status {
   color: var(--text-primary) !important;
-}
-
-.light-theme .pulse {
-  background: var(--text-primary) !important;
 }
 
 .light-theme .msg.bot {

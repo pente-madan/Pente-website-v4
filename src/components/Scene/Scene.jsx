@@ -7,14 +7,15 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
   const animElementsRef = useRef([]);
 
   useEffect(() => {
-    if (sceneRef.current) {
-      const scene = sceneRef.current;
-      const animElements = scene.querySelectorAll('.anim');
-      animElementsRef.current = Array.from(animElements);
+    const scene = sceneRef.current;
+    const animElements = scene ? scene.querySelectorAll('.anim') : [];
+    const capturedAnimElements = Array.from(animElements);
+    animElementsRef.current = capturedAnimElements;
 
+    if (scene) {
       // Kill any ongoing animations to prevent overlap
       gsap.killTweensOf(scene);
-      gsap.killTweensOf(animElementsRef.current);
+      gsap.killTweensOf(capturedAnimElements);
 
       if (isActive) {
         // Different scene container transitions based on type
@@ -88,7 +89,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'hero':
             // Bold entrance from bottom with slight scale
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 y: 40,
@@ -109,7 +110,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'stat':
             // Scale up from center for dramatic reveal
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 scale: 0.8,
@@ -127,7 +128,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
 
           case 'gap':
             // Alternate from left and right
-            animElementsRef.current.forEach((el, index) => {
+            capturedAnimElements.forEach((el, index) => {
               const fromLeft = index % 2 === 0;
               gsap.fromTo(
                 el,
@@ -149,7 +150,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'solution':
             // Fade in from sides with rotation
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 x: -30,
@@ -170,7 +171,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'results':
             // Scale pulse effect for numbers
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 scale: 0.5,
@@ -189,7 +190,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'how':
             // Cascade from top
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 y: -40,
@@ -208,7 +209,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           case 'cta':
             // Zoom in with bounce
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 scale: 0.7,
@@ -227,7 +228,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
           default:
             // Default stagger animation
             gsap.fromTo(
-              animElementsRef.current,
+              capturedAnimElements,
               {
                 opacity: 0,
                 y: 30,
@@ -330,9 +331,9 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
 
     // Cleanup function to kill animations when component unmounts or before new animations start
     return () => {
-      if (sceneRef.current) {
-        gsap.killTweensOf(sceneRef.current);
-        gsap.killTweensOf(animElementsRef.current);
+      if (scene) {
+        gsap.killTweensOf(scene);
+        gsap.killTweensOf(capturedAnimElements);
       }
     };
   }, [isActive, animationType]);

@@ -110,28 +110,81 @@
 }
 
 .scene-dot {
-  width: 4px;
+  position: relative;
+  width: 20px;
   height: 40px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: background 0.3s ease, height 0.3s ease;
   border: none;
+  background: transparent;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   will-change: transform;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-.scene-dot:hover {
+.scene-dot:focus {
+  outline: none;
+}
+
+/* Outer stroke ring */
+.scene-dot .dot-outer-ring {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  pointer-events: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Inner filled circle */
+.scene-dot .dot-inner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
 }
 
-.scene-dot.active {
+/* Pulse fade-in animation */
+@keyframes pulseFadeIn {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.scene-dot:hover .dot-inner {
   background: rgba(255, 255, 255, 0.6);
-  height: 55px;
+  transform: scale(1.15);
 }
 
-.scene-dot.played {
-  background: rgba(255, 255, 255, 0.3);
+.scene-dot.active .dot-outer-ring {
+  border-color: rgba(255, 255, 255, 0.7);
+  animation: pulseFadeIn 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.scene-dot.active .dot-inner {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6),
+              0 0 12px rgba(255, 255, 255, 0.4);
+  animation: pulseFadeIn 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.scene-dot.played .dot-inner {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .play-pause {
@@ -176,9 +229,15 @@
     font-size: 1rem;
   }
   .scene-dot {
-    height: 20px;
+    width: 18px;
+    height: 30px;
   }
-  .scene-dot.active {
-    height: 32px;
+  .scene-dot .dot-outer-ring {
+    width: 16px;
+    height: 16px;
+  }
+  .scene-dot .dot-inner {
+    width: 7px;
+    height: 7px;
   }
 }

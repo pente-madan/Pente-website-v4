@@ -40,11 +40,6 @@ function App() {
   const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef(null);
 
-  const scrollTimeout = useRef(null);
-  const isScrolling = useRef(false);
-  const touchStart = useRef(null);
-  const touchEnd = useRef(null);
-
   // ✅ FIX 2: Force video play on mount — some browsers need an explicit .play() call
   useEffect(() => {
     const video = videoRef.current;
@@ -68,102 +63,6 @@ function App() {
       }, { once: true });
     }
   }, []);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
-        goToScene((current + 1) % 7);
-      } else if (e.key === 'ArrowLeft') {
-        goToScene((current - 1 + 7) % 7);
-      } else if (e.key === ' ') {
-        e.preventDefault();
-        togglePause();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [current, goToScene, togglePause]);
-
-  // Scroll navigation
-  useEffect(() => {
-    const handleWheel = (e) => {
-      e.preventDefault();
-
-      if (isScrolling.current) return;
-
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      isScrolling.current = true;
-
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-
-      if (delta > 0) {
-        if (current < 6) goToScene(current + 1);
-      } else if (delta < 0) {
-        if (current > 0) goToScene(current - 1);
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        isScrolling.current = false;
-      }, 1000);
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('mousewheel', handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('mousewheel', handleWheel);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-    };
-  }, [current, goToScene]);
-
-  // Touch/Swipe navigation
-  useEffect(() => {
-    const minSwipeDistance = 50;
-
-    const handleTouchStart = (e) => {
-      touchEnd.current = null;
-      touchStart.current = e.targetTouches[0].clientY;
-    };
-
-    const handleTouchMove = (e) => {
-      touchEnd.current = e.targetTouches[0].clientY;
-    };
-
-    const handleTouchEnd = () => {
-      if (!touchStart.current || !touchEnd.current) return;
-      if (isScrolling.current) return;
-
-      const distance = touchStart.current - touchEnd.current;
-      const isSwipeUp   = distance > minSwipeDistance;
-      const isSwipeDown = distance < -minSwipeDistance;
-
-      if (isSwipeUp && current < 6) {
-        isScrolling.current = true;
-        goToScene(current + 1);
-        setTimeout(() => { isScrolling.current = false; }, 600);
-      } else if (isSwipeDown && current > 0) {
-        isScrolling.current = true;
-        goToScene(current - 1);
-        setTimeout(() => { isScrolling.current = false; }, 600);
-      }
-    };
-
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, [current, goToScene]);
 
   return (
     <div className="App">

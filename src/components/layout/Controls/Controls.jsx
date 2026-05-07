@@ -42,21 +42,6 @@ const Controls = ({ current, total, sceneTitle, onSceneClick, onTogglePlay, isPa
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // Animate active dot
-    dotsRef.current.forEach((dot, idx) => {
-      if (idx === current) {
-        tl.to(dot, {
-          scaleY: 1.2,
-          duration: 0.3,
-          ease: 'back.out(1.7)',
-        }, 0).to(dot, {
-          scaleY: 1,
-          duration: 0.3,
-          ease: 'power2.out',
-        }, 0.3);
-      }
-    });
-
     // Animate title
     if (titleRef.current) {
       tl.fromTo(titleRef.current, 
@@ -81,19 +66,25 @@ const Controls = ({ current, total, sceneTitle, onSceneClick, onTogglePlay, isPa
   }, [current, sceneTitle]);
 
   const handleDotMouseEnter = (index) => {
-    gsap.to(dotsRef.current[index], {
-      scaleX: 1.5,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
+    const dotInner = dotsRef.current[index]?.querySelector('.dot-inner');
+    if (dotInner) {
+      gsap.to(dotInner, {
+        scale: 1.2,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
   };
 
   const handleDotMouseLeave = (index) => {
-    gsap.to(dotsRef.current[index], {
-      scaleX: 1,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
+    const dotInner = dotsRef.current[index]?.querySelector('.dot-inner');
+    if (dotInner) {
+      gsap.to(dotInner, {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
   };
 
   return (
@@ -105,13 +96,22 @@ const Controls = ({ current, total, sceneTitle, onSceneClick, onTogglePlay, isPa
         aria-label={isPaused ? 'Play' : 'Pause'}
       >
         {isPaused ? (
-          <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-            <path d="M1 1l10 6-10 6V1z" fill="currentColor" />
+          // Play icon from Lucide Icons (lucide.dev)
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M5 3L19 12L5 21V3Z" 
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         ) : (
-          <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-            <rect x="1" y="1" width="3" height="12" fill="currentColor" />
-            <rect x="8" y="1" width="3" height="12" fill="currentColor" />
+          // Pause icon from Lucide Icons (lucide.dev)
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor" />
+            <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor" />
           </svg>
         )}
       </button>
@@ -127,7 +127,10 @@ const Controls = ({ current, total, sceneTitle, onSceneClick, onTogglePlay, isPa
               onMouseEnter={() => handleDotMouseEnter(idx)}
               onMouseLeave={() => handleDotMouseLeave(idx)}
               aria-label={`Scene ${idx + 1}`}
-            />
+            >
+              <span className="dot-outer-ring"></span>
+              <span className="dot-inner"></span>
+            </button>
           ))}
         </div>
         <div className="scene-title-wrapper" ref={titleRef}>

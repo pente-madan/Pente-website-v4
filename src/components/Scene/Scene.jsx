@@ -12,6 +12,10 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
       const animElements = scene.querySelectorAll('.anim');
       animElementsRef.current = Array.from(animElements);
 
+      // Kill any ongoing animations to prevent overlap
+      gsap.killTweensOf(scene);
+      gsap.killTweensOf(animElementsRef.current);
+
       if (isActive) {
         // Different scene container transitions based on type
         switch (animationType) {
@@ -246,7 +250,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               y: '-50vh',
-              duration: 0.6,
+              duration: 0.4,
               ease: 'power3.in',
             });
             break;
@@ -256,7 +260,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               scale: 0.8,
-              duration: 0.5,
+              duration: 0.3,
               ease: 'power2.in',
             });
             break;
@@ -266,7 +270,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               x: '-100vw',
-              duration: 0.6,
+              duration: 0.4,
               ease: 'power3.in',
             });
             break;
@@ -277,7 +281,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
               opacity: 0,
               x: '100vw',
               rotationY: 20,
-              duration: 0.6,
+              duration: 0.4,
               ease: 'power2.in',
             });
             break;
@@ -287,7 +291,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               scale: 0.6,
-              duration: 0.5,
+              duration: 0.3,
               ease: 'power2.in',
             });
             break;
@@ -297,7 +301,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               y: '100vh',
-              duration: 0.6,
+              duration: 0.4,
               ease: 'power3.in',
             });
             break;
@@ -307,7 +311,7 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               scale: 0.4,
-              duration: 0.6,
+              duration: 0.4,
               ease: 'back.in(1.5)',
             });
             break;
@@ -317,12 +321,20 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             gsap.to(scene, {
               opacity: 0,
               y: '-100vh',
-              duration: 0.6,
+              duration: 0.4,
               ease: 'power3.inOut',
             });
         }
       }
     }
+
+    // Cleanup function to kill animations when component unmounts or before new animations start
+    return () => {
+      if (sceneRef.current) {
+        gsap.killTweensOf(sceneRef.current);
+        gsap.killTweensOf(animElementsRef.current);
+      }
+    };
   }, [isActive, animationType]);
 
   return (

@@ -10,10 +10,12 @@
   will-change: opacity, transform;
   transform: translateY(100vh);
   perspective: 1000px;
+  z-index: 1;
 }
 
 .scene.active {
   pointer-events: auto;
+  z-index: 10;
 }
 
 .scene-inner {

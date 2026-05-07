@@ -522,14 +522,30 @@ body:not(.light-theme) .video-overlay {
 /* Control Buttons */
 .light-theme .play-pause,
 .light-theme .nav-arrow {
-  color: #ffffff !important;
+  color: #000000 !important;
   border-color: rgba(0, 0, 0, 0.2) !important;
+  /* Normal state looks like hover state */
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 2px solid rgba(0, 0, 0, 0.3) !important;
+  /* Remove shadow from normal state */
+  box-shadow: none !important;
+}
+
+.light-theme .play-pause svg,
+.light-theme .nav-arrow svg {
+  color: #000000 !important;
 }
 
 .light-theme .play-pause:hover,
 .light-theme .nav-arrow:hover {
-  background: rgba(0, 0, 0, 0.05) !important;
-  border-color: rgba(0, 0, 0, 0.3) !important;
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.4) !important;
+  color: #000000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .play-pause:hover svg,
+.light-theme .nav-arrow:hover svg {
   color: #000000 !important;
 }
 
@@ -544,20 +560,33 @@ body:not(.light-theme) .video-overlay {
 
 /* Scene Dots */
 .light-theme .scene-dot {
-  background: rgba(0, 0, 0, 0.2) !important;
+  background: transparent !important;
 }
 
-.light-theme .scene-dot:hover {
+.light-theme .scene-dot .dot-outer-ring {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.light-theme .scene-dot .dot-inner {
   background: rgba(0, 0, 0, 0.4) !important;
 }
 
-.light-theme .scene-dot.active {
-  background: var(--accent) !important;
-  height: 55px !important;
+.light-theme .scene-dot:hover .dot-inner {
+  background: rgba(0, 0, 0, 0.6) !important;
 }
 
-.light-theme .scene-dot.played {
-  background: rgba(0, 0, 0, 0.3) !important;
+.light-theme .scene-dot.active .dot-outer-ring {
+  border-color: var(--accent) !important;
+}
+
+.light-theme .scene-dot.active .dot-inner {
+  background: var(--accent) !important;
+  box-shadow: 0 0 10px var(--accent),
+              0 0 16px rgba(var(--accent-rgb, 0, 0, 0), 0.5) !important;
+}
+
+.light-theme .scene-dot.played .dot-inner {
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Eyebrow */

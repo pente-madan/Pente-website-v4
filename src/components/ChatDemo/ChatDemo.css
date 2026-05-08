@@ -34,7 +34,7 @@
 }
 
 .chat-demo.hero-mode:hover {
-  transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg) scale(1);
 }
 
 .chat-demo.how-mode {

@@ -37,16 +37,6 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages, leadStatus }
     prevMessagesLength.current = messages.length;
   }, [messages]);
 
-  useEffect(() => {
-    if (chatRef.current) {
-      // Smooth transition between hero and regular mode
-      gsap.to(chatRef.current, {
-        duration: 0.7,
-        ease: 'power3.inOut',
-      });
-    }
-  }, [isHeroMode, isHowMode, isResultsMode]);
-
   const chatClasses = `chat-demo ${isHeroMode ? 'hero-mode' : ''} ${isHowMode ? 'how-mode' : ''} ${isResultsMode ? 'results-mode' : ''}`;
 
   return (

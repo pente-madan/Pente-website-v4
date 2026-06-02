@@ -346,6 +346,12 @@ body:not(.light-theme) .video-overlay {
               inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
 
+/* =========================================================
+   GAP SCENE - LIGHT THEME
+   ========================================================= */
+
+/* Gap scene styles are now in GapScene.css */
+
 .light-theme .send-btn {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;

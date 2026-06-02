@@ -34,6 +34,7 @@ export const useChatSimulation = (currentScene) => {
     setMessages((prev) => [...prev, msg]);
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const startConversation = useCallback(() => {
     clearTimers();
     setMessages([]);

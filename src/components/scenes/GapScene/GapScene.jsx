@@ -113,21 +113,31 @@ const GapScene = () => {
       </div>
 
       <div className="gap-comparison anim">
-        {gapItems.map((item, idx) => (
-          <div key={idx} className="gap-card">
-            {item.oldIcon}
-            <div className="old-way">
-              <span className="label">Today</span>
-              <p className="text">{item.left}</p>
-            </div>
-            <div className="arrow-divider">→</div>
-            <div className="new-way">
-              <span className="label">With Pente</span>
-              <p className="text">{item.right}</p>
-            </div>
-            {item.newIcon}
+        <div className="gap-column gap-old">
+          <h3 className="column-heading">Today</h3>
+          <div className="gap-items">
+            {gapItems.map((item, idx) => (
+              <div key={idx} className="gap-item">
+                {item.oldIcon}
+                <p className="item-text">{item.left}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <div className="gap-divider"></div>
+
+        <div className="gap-column gap-new">
+          <h3 className="column-heading">With Pente</h3>
+          <div className="gap-items">
+            {gapItems.map((item, idx) => (
+              <div key={idx} className="gap-item">
+                {item.newIcon}
+                <p className="item-text">{item.right}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

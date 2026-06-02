@@ -3,7 +3,7 @@
    ========================================================= */
 
 body:not(.light-theme) {
-  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778068208/44444_cmwn3v.png') no-repeat center center;
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780387583/d65c2487-505a-4385-8e86-66166772e433_ziyfuj.png') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -68,7 +68,7 @@ body:not(.light-theme)::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780387583/a8f19e12-d83e-475a-97e3-cafc05995189_jxkqtm.png') no-repeat center 60%;
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780398673/ChatGPT_Image_Jun_2_2026_04_39_58_PM_jcoh3a.png') no-repeat center 60%;
   background-size: cover;
   opacity: 0.8;
   z-index: -10;
@@ -259,10 +259,10 @@ body:not(.light-theme) .video-overlay {
    ========================================================= */
 
 .light-theme .chat-demo {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  backdrop-filter: blur(40px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+  backdrop-filter: blur(50px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(50px) saturate(180%) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
               0 4px 16px rgba(0, 0, 0, 0.08),
               inset 0 2px 4px rgba(255, 255, 255, 0.8),
@@ -270,14 +270,14 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .chat-demo.hero-mode {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(50px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(50px) saturate(200%) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(80px) saturate(200%) brightness(1.05) !important;
+  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.05) !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15),
               0 6px 24px rgba(0, 0, 0, 0.1),
-              inset 0 3px 6px rgba(255, 255, 255, 0.9),
-              inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;
+              inset 0 4px 8px rgba(255, 255, 255, 1),
+              inset 0 -3px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
 .light-theme .chat-header {

@@ -1,7 +1,7 @@
 .chat-demo {
   position: absolute;
   z-index: 100;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.005) 100%);
   pointer-events: auto;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
@@ -28,25 +28,25 @@
   width: min(500px, 42vw);
   padding: 0.85rem;
   transform: translateY(-50%) scale(1) translateZ(50px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
               0 24px 64px -12px rgba(0, 0, 0, 0.3),
-              inset 0 2px 4px 0 rgba(255, 255, 255, 0.15),
-              inset 0 -2px 4px 0 rgba(0, 0, 0, 0.05);
+              inset 0 3px 6px 0 rgba(255, 255, 255, 0.2),
+              inset 0 -3px 6px 0 rgba(0, 0, 0, 0.08);
   animation: chatIntro 1.2s var(--spring) 0.5s both;
-  backdrop-filter: blur(50px) saturate(200%);
-  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  backdrop-filter: blur(80px) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.1);
 }
 
 .chat-demo.hero-mode:hover {
   transform: translateY(-50%) scale(1.01) translateZ(50px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.45),
               0 32px 80px -16px rgba(0, 0, 0, 0.35),
-              inset 0 2px 6px 0 rgba(255, 255, 255, 0.2),
-              inset 0 -2px 6px 0 rgba(0, 0, 0, 0.05);
+              inset 0 4px 8px 0 rgba(255, 255, 255, 0.25),
+              inset 0 -4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .chat-demo.hero-mode.minimized {
@@ -279,7 +279,8 @@
 
 /* Custom Scrollbar Styles */
 .chat-stream::-webkit-scrollbar {
-  width: 4px;
+  width: 0;
+  display: none;
 }
 
 .chat-stream::-webkit-scrollbar-track {
@@ -301,6 +302,11 @@
 
 .light-theme .chat-stream::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
+}
+
+/* Hide scrollbar for Firefox */
+.chat-stream {
+  scrollbar-width: none;
 }
 
 /* Chat Box Introduction Animation */

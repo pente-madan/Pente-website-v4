@@ -512,7 +512,11 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .result .big-num {
-  color: var(--accent) !important;
+  color: #000000 !important;
+}
+
+.light-theme .result .big-num span {
+  color: #000000 !important;
 }
 
 .light-theme .result .big-num .small {

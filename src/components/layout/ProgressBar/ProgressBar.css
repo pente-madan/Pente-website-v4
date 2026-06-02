@@ -8,7 +8,7 @@
   gap: 3px;
   padding: 0 2.5rem;
   z-index: 99;
-  background: var(--bg);
+  background: transparent;
 }
 
 .progress-segment {
@@ -17,7 +17,8 @@
   background: var(--line);
   position: relative;
   overflow: hidden;
-  transition: background 0.3s ease;
+  transition: background 0.4s var(--ease-out-expo);
+  border-radius: 2px;
 }
 
 .progress-segment .fill {
@@ -26,13 +27,18 @@
   background: var(--amber);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s var(--ease-out-expo);
+  box-shadow: 0 0 8px var(--amber),
+              0 0 12px rgba(255, 255, 255, 0.3);
 }
 
 .progress-segment.played .fill {
   transform: scaleX(1);
+  box-shadow: 0 0 4px var(--amber);
 }
 
 .progress-segment.active .fill {
   transform: scaleX(1);
+  box-shadow: 0 0 12px var(--amber),
+              0 0 18px rgba(255, 255, 255, 0.4);
 }

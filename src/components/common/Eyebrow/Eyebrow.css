@@ -8,6 +8,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--ease-out-expo);
 }
 
 .eyebrow::before {
@@ -16,4 +18,6 @@
   width: 24px;
   height: 1px;
   background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+  transition: all 0.3s var(--ease-out-expo);
 }

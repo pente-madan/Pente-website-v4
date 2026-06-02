@@ -11,7 +11,7 @@ const HeroScene = () => {
             THE PITCH
           </div>
           <h1 className="section-title anim">
-            A website is no longer <span className="strike">a page.</span><br />
+            A website is no longer a page.<br />
             It is a <span className="italic">conversation that</span><br />
              closes deals.
           </h1>

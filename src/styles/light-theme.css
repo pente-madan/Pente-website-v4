@@ -19,7 +19,7 @@ body:not(.light-theme)::after {
 
 .light-theme {
   /* BACKGROUNDS */
-  --bg: #ffffff;
+  --bg: #FAF9F6;
   --bg-secondary: #fafafa;
   --bg-card: #ffffff;
 
@@ -68,7 +68,7 @@ body:not(.light-theme)::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1778070559/444445555_fk08fq.png') no-repeat center 60%;
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780387583/a8f19e12-d83e-475a-97e3-cafc05995189_jxkqtm.png') no-repeat center 60%;
   background-size: cover;
   opacity: 0.8;
   z-index: -10;
@@ -144,12 +144,24 @@ body:not(.light-theme)::after {
   border: 1px solid rgba(0, 0, 0, 1) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
               inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(0px) !important;
+  transition: all 0.4s var(--ease-out-expo) !important;
+}
+
+.light-theme .btn-primary::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%) !important;
 }
 
 .light-theme .btn-primary:hover {
   background: rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25),
               inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.light-theme .btn-primary:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.8) !important;
+  outline-offset: 3px !important;
 }
 
 .light-theme .nav-cta {
@@ -247,21 +259,30 @@ body:not(.light-theme) .video-overlay {
    ========================================================= */
 
 .light-theme .chat-demo {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(40px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
               0 4px 16px rgba(0, 0, 0, 0.08),
-              inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+              inset 0 2px 4px rgba(255, 255, 255, 0.8),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.03) !important;
 }
 
 .light-theme .chat-demo.hero-mode {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(50px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(50px) saturate(200%) !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15),
               0 6px 24px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+              inset 0 3px 6px rgba(255, 255, 255, 0.9),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.03) !important;
 }
 
 .light-theme .chat-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%) !important;
 }
 
 .light-theme .chat-url {
@@ -277,24 +298,64 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .msg.bot {
-  background: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
   color: var(--text-primary) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08),
+              inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
 
 .light-theme .msg.user {
-  background: rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.08) 100%) !important;
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
   color: var(--text-primary) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1),
+              inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
 .light-theme .chat-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 100%) !important;
   color: var(--text-secondary) !important;
 }
 
 .light-theme .chat-footer .lead-status {
   color: var(--text-primary) !important;
+}
+
+.light-theme .chat-input {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: var(--text-primary) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+}
+
+.light-theme .chat-input::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.light-theme .chat-input:focus {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05),
+              inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+.light-theme .send-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.light-theme .send-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(0, 0, 0, 0.9) !important;
 }
 
 /* =========================================================
@@ -358,6 +419,18 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .new-way .text {
+  color: var(--text-primary) !important;
+}
+
+.light-theme .old-icon {
+  color: var(--text-muted) !important;
+}
+
+.light-theme .new-icon {
+  color: var(--accent) !important;
+}
+
+.light-theme .gap-card:hover .new-icon {
   color: var(--text-primary) !important;
 }
 

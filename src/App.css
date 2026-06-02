@@ -6,6 +6,7 @@
   bottom: 0;
   overflow: hidden;
   overscroll-behavior: none;
+  contain: layout style paint;
 }
 
 .background-video {
@@ -34,6 +35,7 @@
   background: rgba(0, 0, 0, 0.3);
   z-index: -0.5;
   pointer-events: none;
+  transition: background 0.5s var(--ease-out-expo);
 }
 
 .stage.paused .progress-segment.active .fill {

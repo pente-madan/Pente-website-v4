@@ -21,42 +21,42 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
         // Different scene container transitions based on type
         switch (animationType) {
           case 'hero':
-            // Slide from bottom
+            // Slide from bottom with blur
             gsap.fromTo(scene, 
-              { opacity: 0, y: '100vh' },
-              { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
+              { opacity: 0, y: '100vh', filter: 'blur(20px)' },
+              { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out' }
             );
             break;
           
           case 'stat':
-            // Scale zoom in
+            // Scale zoom in with blur
             gsap.fromTo(scene,
-              { opacity: 0, scale: 0.7, y: 0 },
-              { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.2)' }
+              { opacity: 0, scale: 0.7, y: 0, filter: 'blur(15px)' },
+              { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'back.out(1.2)' }
             );
             break;
           
           case 'gap':
-            // Slide from right
+            // Slide from right with blur
             gsap.fromTo(scene,
-              { opacity: 0, x: '100vw', y: 0 },
-              { opacity: 1, x: 0, y: 0, duration: 0.9, ease: 'power3.inOut' }
+              { opacity: 0, x: '100vw', y: 0, filter: 'blur(18px)' },
+              { opacity: 1, x: 0, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.inOut' }
             );
             break;
           
           case 'solution':
-            // Slide from left with rotation
+            // Slide from left with rotation and blur
             gsap.fromTo(scene,
-              { opacity: 0, x: '-100vw', rotationY: -20, y: 0 },
-              { opacity: 1, x: 0, rotationY: 0, y: 0, duration: 0.9, ease: 'power2.out' }
+              { opacity: 0, x: '-100vw', rotationY: -20, y: 0, filter: 'blur(20px)' },
+              { opacity: 1, x: 0, rotationY: 0, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power2.out' }
             );
             break;
           
           case 'results':
-            // Zoom in with bounce
+            // Zoom in with bounce and blur
             gsap.fromTo(scene,
-              { opacity: 0, scale: 0.5, y: 0 },
-              { opacity: 1, scale: 1, y: 0, duration: 1, ease: 'elastic.out(1, 0.6)' }
+              { opacity: 0, scale: 0.5, y: 0, filter: 'blur(25px)' },
+              { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: 'elastic.out(1, 0.6)' }
             );
             break;
           
@@ -69,10 +69,10 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
             break;
           
           case 'cta':
-            // Dramatic scale with spring
+            // Dramatic scale with spring and blur
             gsap.fromTo(scene,
-              { opacity: 0, scale: 0.3, y: 0 },
-              { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: 'back.out(2)' }
+              { opacity: 0, scale: 0.3, y: 0, filter: 'blur(30px)' },
+              { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.3, ease: 'back.out(2)' }
             );
             break;
           
@@ -87,21 +87,23 @@ const Scene = ({ children, isActive, className = '', animationType = 'default' }
         // Different animations based on type
         switch (animationType) {
           case 'hero':
-            // Bold entrance from bottom with slight scale
+            // Bold entrance from bottom with slight scale and blur
             gsap.fromTo(
               capturedAnimElements,
               {
                 opacity: 0,
-                y: 40,
-                scale: 0.98,
+                y: 50,
+                scale: 0.96,
+                filter: 'blur(8px)',
               },
               {
                 opacity: 1,
                 y: 0,
                 scale: 1,
-                duration: 1,
-                stagger: 0.15,
-                delay: 0.2,
+                filter: 'blur(0px)',
+                duration: 1.1,
+                stagger: 0.08,
+                delay: 0.3,
                 ease: 'power3.out',
               }
             );

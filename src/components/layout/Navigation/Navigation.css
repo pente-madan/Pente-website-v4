@@ -23,6 +23,12 @@
   font-weight: 500;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
+  transition: all 0.3s var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: translateX(3px);
 }
 
 .sites {
@@ -74,7 +80,7 @@
 
 .theme-toggle {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: var(--ink);
   width: 40px;
   height: 40px;
@@ -83,14 +89,28 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s var(--ease-out-expo);
   padding: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-1);
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: var(--shadow-2);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95) rotate(0deg);
+  transition: all 0.15s var(--ease-in-out-quart);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 3px;
 }
 
 .theme-toggle svg {

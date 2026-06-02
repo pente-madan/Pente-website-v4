@@ -1,22 +1,23 @@
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.95rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 1rem;
+  padding: 1.3rem 2.3rem;
+  background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
   border-radius: 100px;
   font-weight: 500;
-  font-size: 0.92rem;
-  transition: all 0.4s var(--ease-out-expo);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 1rem;
+  transition: all 0.5s var(--ease-out-expo);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.18),
+              0 30px 70px -10px rgba(0, 0, 0, 0.4),
+              inset 0 0 0 1.5px rgba(255, 255, 255, 0.3),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: none;
   cursor: pointer;
   will-change: transform;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08),
-              inset 0 0 20px rgba(255, 255, 255, 0.03),
-              0 8px 16px -4px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -25,9 +26,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
   opacity: 0;
-  transition: opacity 0.4s var(--ease-out-expo);
+  transition: opacity 0.5s var(--ease-out-expo);
 }
 
 .btn-primary:hover::before {
@@ -37,26 +38,27 @@
 .btn-primary:hover {
   background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.18),
-              inset 0 0 0 1.5px rgba(255, 255, 255, 0.4),
-              0 16px 40px -8px rgba(0, 0, 0, 0.4),
-              inset 0 0 30px rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.28),
+              0 40px 90px -15px rgba(0, 0, 0, 0.5),
+              inset 0 0 0 2px rgba(255, 255, 255, 0.4),
+              inset 0 0 50px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .btn-primary:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(-1px) scale(1);
   transition: all 0.15s var(--ease-in-out-quart);
 }
 
 .btn-primary svg {
-  transition: transform 0.4s var(--spring);
+  will-change: transform;
+  transition: transform 0.5s var(--ease-out-expo);
 }
 
 .btn-primary:hover svg {
-  transform: translateX(3px);
+  transform: translateX(5px) scale(1.1);
 }
 
 .btn-primary:focus-visible {

@@ -65,7 +65,7 @@
 }
 
 .new-way {
-  margin-left: 3rem;
+  margin-left: 4rem;
 }
 
 .old-way .label,
@@ -136,7 +136,7 @@
   color: var(--amber);
   opacity: 0.8;
   flex-shrink: 0;
-  margin-left: -1rem;
+  margin-left: -1.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { useTheme } from '../../hooks/useTheme';
 import './ChatDemo.css';
 
 const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessages, leadStatus }) => {
+  const { theme } = useTheme();
   const streamRef = useRef(null);
   const chatRef = useRef(null);
   const prevMessagesLength = useRef(0);
@@ -10,6 +12,21 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false); // Only for non-hero scenes expansion
+  const [isShrinking, setIsShrinking] = useState(false); // Track shrink animation
+  const prevIsHeroMode = useRef(isHeroMode);
+
+  // Detect transition from hero to non-hero mode
+  useEffect(() => {
+    if (prevIsHeroMode.current && !isHeroMode && !isExpanded) {
+      // Transitioning from hero to non-hero: trigger shrink animation
+      setIsShrinking(true);
+      const timer = setTimeout(() => {
+        setIsShrinking(false);
+      }, 800); // Match CSS transition duration
+      return () => clearTimeout(timer);
+    }
+    prevIsHeroMode.current = isHeroMode;
+  }, [isHeroMode, isExpanded]);
 
   // Predefined AI responses for different scenarios
   const aiResponses = {
@@ -141,13 +158,32 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
     }
   };
 
-  const handleExpand = () => {
-    if (!isHeroMode) {
-      setIsExpanded(true); // Only works in non-hero scenes
-    }
+  const handleWidgetClick = () => {
+    setIsExpanded(true);
   };
 
-  const chatClasses = `chat-demo ${isHeroMode ? 'hero-mode' : ''} ${isHowMode ? 'how-mode' : ''} ${isResultsMode ? 'results-mode' : ''} ${!isHeroMode && isExpanded ? 'expanded' : ''}`;
+  const chatClasses = `chat-demo ${isHeroMode ? 'hero-mode' : ''} ${isHowMode ? 'how-mode' : ''} ${isResultsMode ? 'results-mode' : ''} ${!isHeroMode && isExpanded ? 'expanded' : ''} ${isShrinking ? 'shrink-to-widget' : ''} ${!isHeroMode && !isExpanded && !isShrinking ? 'widget-mode' : ''}`;
+
+  // Show widget button in non-hero scenes when not expanded and not shrinking
+  if (!isHeroMode && !isExpanded && !isShrinking) {
+    return (
+      <button 
+        key={theme}
+        className="chat-widget" 
+        onClick={handleWidgetClick} 
+        aria-label="Open chat"
+      >
+        <img 
+          src={theme === 'light' 
+            ? "https://res.cloudinary.com/drhyerkn7/image/upload/v1778051556/Light_theme_logo_joroju.png"
+            : "https://res.cloudinary.com/drhyerkn7/image/upload/v1777878548/Dark_theme_logo_cnaxxz.png"
+          }
+          alt="Pente Chat"
+          className="widget-logo"
+        />
+      </button>
+    );
+  }
 
   return (
     <div ref={chatRef} className={chatClasses}>
@@ -157,32 +193,52 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
           www.pente.ai
         </div>
         <div className="chat-controls">
-          <button className="control-btn minimize" aria-label="Minimize" onClick={handleMinimize}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-          </button>
-          <button className="control-btn expand" aria-label="Expand" onClick={handleExpand}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 2H12V5M5 12H2V9M12 2L8 6M2 12L6 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          {!isHeroMode && (
+            <button className="control-btn minimize" aria-label="Minimize" onClick={handleMinimize}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 7H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+          )}
         </div>
       </div>
       <div className="chat-stream" ref={streamRef}>
-        {messages.map((msg, idx) => (
-          <div key={idx} className={`msg ${msg.type}`}>
-            {msg.text}
-          </div>
-        ))}
-        {isTyping && (
-          <div className="msg bot typing-indicator">
-            <div className="typing-dots">
-              <span></span>
-              <span></span>
-              <span></span>
+        {messages.length === 0 ? (
+          <div className="welcome-message">
+            <div className="welcome-icon">👋</div>
+            <h3 className="welcome-title">Hey there!</h3>
+            <p className="welcome-text">
+              Ready to turn your visitors into customers? Let's talk.
+            </p>
+            <div className="welcome-suggestions">
+              <button className="suggestion-btn" onClick={() => setInputValue("Show me the features")}>
+                ✨ Features
+              </button>
+              <button className="suggestion-btn" onClick={() => setInputValue("What's the pricing?")}>
+                💰 Pricing
+              </button>
+              <button className="suggestion-btn" onClick={() => setInputValue("Let's get started!")}>
+                🚀 Get Started
+              </button>
             </div>
           </div>
+        ) : (
+          <>
+            {messages.map((msg, idx) => (
+              <div key={idx} className={`msg ${msg.type}`}>
+                {msg.text}
+              </div>
+            ))}
+            {isTyping && (
+              <div className="msg bot typing-indicator">
+                <div className="typing-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="chat-footer">
@@ -190,7 +246,7 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
           <input 
             type="text" 
             className="chat-input" 
-            placeholder="Type a message..."
+            placeholder="Your next lead is one reply away..."
             aria-label="Chat input"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}

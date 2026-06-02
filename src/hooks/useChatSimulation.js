@@ -61,10 +61,13 @@ export const useChatSimulation = (currentScene) => {
   }, [clearTimers, addMessage]);
 
   useEffect(() => {
+    // Don't auto-start conversation on hero scene (scene 0)
+    // Let the welcome message show first
     if (currentScene === 0) {
-      startConversation();
+      setMessages([]);
+      setLeadStatus('— intent detected');
     }
-  }, [currentScene, startConversation]);
+  }, [currentScene]);
 
   useEffect(() => {
     return () => clearTimers();

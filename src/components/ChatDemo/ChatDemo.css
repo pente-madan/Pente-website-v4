@@ -1,3 +1,60 @@
+/* Chat Widget Button (shown in non-hero scenes) */
+.chat-widget {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.chat-widget:hover {
+  transform: scale(1.08);
+}
+
+.chat-widget:active {
+  transform: scale(0.95);
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-logo {
+  width: 48px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  animation: logoRotate 32s linear infinite;
+}
+
+@keyframes logoRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes widgetBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Light theme widget styles */
+.light-theme .chat-widget {
+  background: transparent !important;
+  border: none !important;
+}
+
+.light-theme .chat-widget:hover {
+  background: transparent !important;
+  border: none !important;
+}
+
 .chat-demo {
   position: absolute;
   z-index: 100;
@@ -25,7 +82,7 @@
   top: 54%;
   right: 2.5rem;
   bottom: auto;
-  width: min(500px, 42vw);
+  width: min(420px, 38vw);
   padding: 0.85rem;
   transform: translateY(-50%) scale(1) translateZ(50px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -78,14 +135,27 @@
   top: 54% !important;
   right: 2.5rem !important;
   bottom: auto !important;
-  width: min(580px, 45vw) !important;
+  width: min(420px, 38vw) !important;
   padding: 0.85rem !important;
-  transform: translateY(-50%) scale(1) !important;
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.12),
-              0 30px 60px -25px rgba(0, 0, 0, 0.3),
-              0 10px 25px -10px rgba(0, 0, 0, 0.2),
-              inset 0 0 30px rgba(255, 255, 255, 0.05);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-50%) scale(1) translateZ(50px) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+              0 24px 64px -12px rgba(0, 0, 0, 0.3),
+              inset 0 3px 6px 0 rgba(255, 255, 255, 0.2),
+              inset 0 -3px 6px 0 rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: blur(80px) saturate(200%) brightness(1.1) !important;
+  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.1) !important;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-radius 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 20px !important;
+  pointer-events: auto !important;
+  overflow: visible !important;
+}
+
+.chat-demo:not(.hero-mode).expanded * {
+  opacity: 1 !important;
+  transition: opacity 0.5s ease 0.3s !important;
 }
 
 .chat-demo:not(.hero-mode).expanded .chat-stream {
@@ -107,6 +177,38 @@
 
 .chat-demo:not(.hero-mode):not(.expanded) {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shrink to widget animation */
+.chat-demo.shrink-to-widget {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  top: auto !important;
+  bottom: 1.5rem !important;
+  right: 2rem !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: scale(1) !important;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-radius 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  pointer-events: none;
+}
+
+.chat-demo.shrink-to-widget * {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.light-theme .chat-demo.shrink-to-widget {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Light theme for expanded non-hero scenes */
@@ -570,4 +672,99 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   color: #000000;
   font-size: 0.78rem;
+}
+
+/* Welcome Message Styles */
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem 1.2rem;
+  height: 100%;
+  gap: 0.8rem;
+}
+
+.welcome-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+}
+
+.welcome-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.welcome-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0;
+  max-width: 95%;
+}
+
+.welcome-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.suggestion-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--ink);
+  padding: 0.55rem 1.1rem;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.suggestion-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme welcome message */
+.light-theme .welcome-title,
+.light-theme .welcome-text {
+  color: var(--text-primary);
+}
+
+.light-theme .suggestion-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+.light-theme .suggestion-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
 }

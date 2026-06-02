@@ -19,7 +19,8 @@
   z-index: 1;
   width: 100%;
   max-width: 1000px;
-  margin: 5rem auto 0;
+  margin: 0 auto;
+  padding-top: 15vh;
 }
 
 .scene-cta .header-row {

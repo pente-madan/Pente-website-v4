@@ -27,7 +27,6 @@
   background: var(--amber);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s var(--ease-out-expo);
   box-shadow: 0 0 8px var(--amber),
               0 0 12px rgba(255, 255, 255, 0.3);
 }

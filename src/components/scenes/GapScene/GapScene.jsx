@@ -59,8 +59,8 @@ const GapScene = () => {
       )
     },
     { 
-      left: 'Manual qualification', 
-      right: 'Automatic AI qualification',
+      left: 'Manual lead qualification', 
+      right: 'Intelligent AI lead qualification',
       oldIcon: (
         <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 11c0-1.5 1-3 2-3s2 1.5 2 3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -114,7 +114,7 @@ const GapScene = () => {
 
       <div className="gap-comparison anim">
         <div className="gap-column gap-old">
-          <h3 className="column-heading">Today</h3>
+          <h3 className="column-heading">Standard Static Sites</h3>
           <div className="gap-items">
             {gapItems.map((item, idx) => (
               <div key={idx} className="gap-item">
@@ -128,7 +128,7 @@ const GapScene = () => {
         <div className="gap-divider"></div>
 
         <div className="gap-column gap-new">
-          <h3 className="column-heading">With Pente</h3>
+          <h3 className="column-heading">Pente Smart Sites</h3>
           <div className="gap-items">
             {gapItems.map((item, idx) => (
               <div key={idx} className="gap-item">

@@ -70,6 +70,7 @@
   color: var(--ink-muted);
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  display: none;
 }
 
 .nav-actions {

@@ -680,6 +680,10 @@ body:not(.light-theme) .video-overlay {
   color: var(--text-muted) !important;
 }
 
+/* Logo Sites */
+.light-theme .sites {
+  color: #3B82F6 !important;
+}
 
 
 

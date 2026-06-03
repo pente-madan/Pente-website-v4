@@ -49,8 +49,8 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  background: radial-gradient(ellipse 80% 50% at 80% 0%, rgba(0, 0, 0, 0.025), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(0, 0, 0, 0.025), transparent 60%);
+  background: radial-gradient(ellipse 80% 50% at 80% 0%, rgba(29, 29, 31, 0.025), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(29, 29, 31, 0.025), transparent 60%);
 }
 
 ::selection {
@@ -101,7 +101,7 @@ select:focus-visible,
 .light-theme textarea:focus-visible,
 .light-theme select:focus-visible,
 .light-theme [tabindex]:focus-visible {
-  outline: 2px solid rgba(37, 99, 235, 0.7);
+  outline: 2px solid rgba(28, 89, 189, 0.7);
 }
 
 /* Custom Cursor Interactions */
@@ -162,8 +162,8 @@ a:active,
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.08),
-              inset 0 0 15px rgba(59, 130, 246, 0.05);
+  box-shadow: 0 0 15px rgba(28, 89, 189, 0.08),
+              inset 0 0 15px rgba(28, 89, 189, 0.05);
 }
 
 @media (prefers-reduced-motion: reduce) {

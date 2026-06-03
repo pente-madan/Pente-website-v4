@@ -65,9 +65,9 @@
   padding: 0.75rem;
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+  box-shadow: 0 8px 32px 0 rgba(29, 29, 31, 0.37),
               inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
-              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
+              inset 0 -1px 1px 0 rgba(29, 29, 31, 0.05);
   bottom: 0.75rem;
   right: 2rem;
   width: 280px;
@@ -87,10 +87,10 @@
   transform: translateY(-50%) scale(1) translateZ(50px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
-              0 24px 64px -12px rgba(0, 0, 0, 0.3),
+  box-shadow: 0 8px 32px 0 rgba(29, 29, 31, 0.4),
+              0 24px 64px -12px rgba(29, 29, 31, 0.3),
               inset 0 3px 6px 0 rgba(255, 255, 255, 0.2),
-              inset 0 -3px 6px 0 rgba(0, 0, 0, 0.08);
+              inset 0 -3px 6px 0 rgba(29, 29, 31, 0.08);
   animation: chatIntro 1.2s var(--spring) 0.5s both;
   backdrop-filter: blur(80px) saturate(200%) brightness(1.1);
   -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.1);
@@ -100,10 +100,10 @@
   transform: translateY(-50%) scale(1.01) translateZ(50px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.45),
-              0 32px 80px -16px rgba(0, 0, 0, 0.35),
+  box-shadow: 0 8px 40px 0 rgba(29, 29, 31, 0.45),
+              0 32px 80px -16px rgba(29, 29, 31, 0.35),
               inset 0 4px 8px 0 rgba(255, 255, 255, 0.25),
-              inset 0 -4px 8px 0 rgba(0, 0, 0, 0.1);
+              inset 0 -4px 8px 0 rgba(29, 29, 31, 0.1);
 }
 
 .chat-demo.hero-mode.minimized {
@@ -113,9 +113,9 @@
   top: auto;
   padding: 0.4rem;
   transform: scale(0.75);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3),
-              0 20px 40px -20px rgba(0, 0, 0, 0.5),
-              0 8px 20px -8px rgba(0, 0, 0, 0.4),
+  box-shadow: 0 0 25px rgba(29, 29, 31, 0.3),
+              0 20px 40px -20px rgba(29, 29, 31, 0.5),
+              0 8px 20px -8px rgba(29, 29, 31, 0.4),
               inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
@@ -140,10 +140,10 @@
   transform: translateY(-50%) scale(1) translateZ(50px) !important;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
-              0 24px 64px -12px rgba(0, 0, 0, 0.3),
+  box-shadow: 0 8px 32px 0 rgba(29, 29, 31, 0.4),
+              0 24px 64px -12px rgba(29, 29, 31, 0.3),
               inset 0 3px 6px 0 rgba(255, 255, 255, 0.2),
-              inset 0 -3px 6px 0 rgba(0, 0, 0, 0.08) !important;
+              inset 0 -3px 6px 0 rgba(29, 29, 31, 0.08) !important;
   backdrop-filter: blur(80px) saturate(200%) brightness(1.1) !important;
   -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.1) !important;
   transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -214,10 +214,10 @@
 /* Light theme for expanded non-hero scenes */
 .light-theme .chat-demo:not(.hero-mode).expanded {
   background: rgba(255, 255, 255, 0.85) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.12),
-              0 30px 60px -25px rgba(0, 0, 0, 0.3),
-              0 10px 25px -10px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(29, 29, 31, 0.1) !important;
+  box-shadow: 0 0 35px rgba(29, 29, 31, 0.12),
+              0 30px 60px -25px rgba(29, 29, 31, 0.3),
+              0 10px 25px -10px rgba(29, 29, 31, 0.2) !important;
 }
 
 .chat-demo.how-mode {
@@ -349,11 +349,11 @@
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 0 rgba(29, 29, 31, 0.5);
   }
   50% {
     opacity: 0.6;
-    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 8px rgba(29, 29, 31, 0);
   }
 }
 
@@ -375,8 +375,8 @@
   overflow-x: hidden;
   justify-content: flex-start;
   position: relative;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 25%, #000 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 25%, #000 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #1d1d1f 25%, #1d1d1f 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #1d1d1f 25%, #1d1d1f 100%);
 }
 
 /* Custom Scrollbar Styles */
@@ -399,11 +399,11 @@
 }
 
 .light-theme .chat-stream::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(29, 29, 31, 0.2);
 }
 
 .light-theme .chat-stream::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(29, 29, 31, 0.3);
 }
 
 /* Hide scrollbar for Firefox */
@@ -458,7 +458,7 @@
   color: #ffffff;
   align-self: flex-start;
   border-bottom-left-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+  box-shadow: 0 4px 12px rgba(29, 29, 31, 0.15),
               inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
@@ -471,7 +471,7 @@
   font-weight: 500;
   border-bottom-right-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+  box-shadow: 0 4px 12px rgba(29, 29, 31, 0.15),
               inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
@@ -543,7 +543,7 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
   border-color: rgba(255, 255, 255, 0.25);
   transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(29, 29, 31, 0.2);
 }
 
 .send-btn:disabled {
@@ -554,13 +554,13 @@
 /* Light Theme Styles */
 .light-theme .chat-demo {
   background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08),
-              0 20px 40px -20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  box-shadow: 0 0 25px rgba(29, 29, 31, 0.08),
+              0 20px 40px -20px rgba(29, 29, 31, 0.15);
 }
 
 .light-theme .chat-url {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(29, 29, 31, 0.7);
 }
 
 .light-theme .status-dot {
@@ -569,58 +569,58 @@
 }
 
 .light-theme .control-btn {
-  color: rgba(0, 0, 0, 0.5) !important;
+  color: rgba(29, 29, 31, 0.5) !important;
   background: transparent !important;
   pointer-events: auto !important;
 }
 
 .light-theme .control-btn:hover {
-  color: rgba(0, 0, 0, 1) !important;
+  color: rgba(29, 29, 31, 1) !important;
   background: transparent !important;
   pointer-events: auto !important;
 }
 
 .light-theme .chat-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(29, 29, 31, 0.15);
 }
 
 .light-theme .chat-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(29, 29, 31, 0.15);
 }
 
 .light-theme .chat-input {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  color: #000000;
+  background: rgba(29, 29, 31, 0.03);
+  border: 1px solid rgba(29, 29, 31, 0.15);
+  color: #1d1d1f;
   pointer-events: auto;
 }
 
 .light-theme .chat-input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(29, 29, 31, 0.4);
 }
 
 .light-theme .chat-input:focus {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+  background: rgba(29, 29, 31, 0.05);
+  border-color: rgba(29, 29, 31, 0.3);
+  box-shadow: 0 0 0 2px rgba(29, 29, 31, 0.08);
 }
 
 .light-theme .send-btn {
-  color: #3B82F6 !important;
+  color: #1c59bd !important;
   background: #ffffff !important;
   pointer-events: auto !important;
 }
 
 .light-theme .send-btn:hover:not(:disabled) {
-  color: #3B82F6 !important;
+  color: #1c59bd !important;
   background: #ffffff !important;
   pointer-events: auto !important;
 }
 
 .light-theme .msg.bot {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #000000;
+  background: rgba(29, 29, 31, 0.05);
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  color: #1d1d1f;
 }
 /* Typing Indicator */
 .typing-indicator {
@@ -665,12 +665,12 @@
 
 /* Light theme typing indicator */
 .light-theme .typing-indicator {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(29, 29, 31, 0.6);
 }
 .light-theme .msg.user {
-  background: rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  color: #000000;
+  background: rgba(29, 29, 31, 0.08);
+  border: 1px solid rgba(29, 29, 31, 0.15);
+  color: #1d1d1f;
   font-size: 0.78rem;
 }
 
@@ -737,19 +737,19 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(29, 29, 31, 0.1);
 }
 
 .suggestion-btn:hover {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(29, 29, 31, 0.15);
 }
 
 .suggestion-btn:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(29, 29, 31, 0.1);
 }
 
 /* Light theme welcome message */
@@ -759,12 +759,12 @@
 }
 
 .light-theme .suggestion-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(29, 29, 31, 0.05);
+  border: 1px solid rgba(29, 29, 31, 0.1);
   color: var(--text-primary);
 }
 
 .light-theme .suggestion-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(29, 29, 31, 0.08);
+  border-color: rgba(29, 29, 31, 0.15);
 }

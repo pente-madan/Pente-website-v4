@@ -101,7 +101,7 @@ select:focus-visible,
 .light-theme textarea:focus-visible,
 .light-theme select:focus-visible,
 .light-theme [tabindex]:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.6);
+  outline: 2px solid rgba(37, 99, 235, 0.7);
 }
 
 /* Custom Cursor Interactions */
@@ -162,8 +162,8 @@ a:active,
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05),
-              inset 0 0 15px rgba(255, 255, 255, 0.03);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.08),
+              inset 0 0 15px rgba(59, 130, 246, 0.05);
 }
 
 @media (prefers-reduced-motion: reduce) {

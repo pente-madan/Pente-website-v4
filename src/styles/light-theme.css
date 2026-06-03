@@ -33,19 +33,26 @@ body:not(.light-theme)::after {
   --border-strong: rgba(0, 0, 0, 0.18);
 
   /* ACCENTS */
-  --accent: #000000;
-  --accent-soft: #444444;
-  --amber: #000000;
-  --amber-glow: #000000;
-  --terracotta: #000000;
+  --accent: #2563EB;
+--accent-soft: #3B82F6;
+--accent-rgb: 37, 99, 235;
+--amber: #2563EB;
+--amber-glow: rgba(37, 99, 235, 0.4);
+--terracotta: #2563EB;
 
   /* GLASS */
   --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-bg-hover: rgba(255, 255, 255, 0.95);
 
-  /* SHADOWS */
-  --shadow-soft: 0 8px 20px -8px rgba(0, 0, 0, 0.12);
-  --shadow-medium: 0 20px 40px -20px rgba(0, 0, 0, 0.18);
+  /* SHADOWS (Subtle Blue) */
+  --shadow-soft: 0 8px 20px -8px rgba(59, 130, 246, 0.1);
+  --shadow-medium: 0 20px 40px -20px rgba(59, 130, 246, 0.15);
+  --shadow-1: 0 2px 4px rgba(59, 130, 246, 0.06);
+  --shadow-2: 0 4px 8px rgba(59, 130, 246, 0.08), 0 2px 4px rgba(59, 130, 246, 0.05);
+  --shadow-3: 0 8px 16px rgba(59, 130, 246, 0.1), 0 4px 8px rgba(59, 130, 246, 0.06);
+  --shadow-4: 0 12px 24px rgba(59, 130, 246, 0.12), 0 6px 12px rgba(59, 130, 246, 0.08);
+  --shadow-5: 0 20px 40px rgba(59, 130, 246, 0.15), 0 10px 20px rgba(59, 130, 246, 0.1);
+  --shadow-6: 0 30px 60px rgba(59, 130, 246, 0.2), 0 15px 30px rgba(59, 130, 246, 0.12);
 
   /* Map to existing variables */
   --ink: var(--text-primary);
@@ -68,9 +75,9 @@ body:not(.light-theme)::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780398673/ChatGPT_Image_Jun_2_2026_04_39_58_PM_jcoh3a.png') no-repeat center 60%;
+  background: url('https://res.cloudinary.com/drhyerkn7/image/upload/v1780476071/ChatGPT_Image_Jun_3_2026_01_28_44_PM_h6gf9h.png') no-repeat center 60%;
   background-size: cover;
-  opacity: 0.8;
+  opacity: 0.6;
   z-index: -10;
   pointer-events: none;
 }
@@ -129,68 +136,51 @@ body:not(.light-theme)::after {
 }
 
 /* BUTTONS */
-.light-theme button,
+.light-theme button:not(.scene-dot):not(.play-pause):not(.nav-arrow):not(.send-btn):not(.chat-widget),
 .light-theme .btn,
 .light-theme .primary-btn {
-  background: #000000 !important;
+  background: var(--accent) !important;
   color: #ffffff !important;
   border: none !important;
 }
 
 /* Specific Button Component Styles */
 .light-theme .btn-primary {
-  background: rgba(0, 0, 0, 0.9) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(0px) !important;
-  transition: all 0.4s var(--ease-out-expo) !important;
-}
-
-.light-theme .btn-primary::before {
-  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%) !important;
+  background: rgba(37, 99, 235, 0.95) !important;
+  border: 1px solid rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .light-theme .btn-primary:hover {
-  background: rgba(0, 0, 0, 1) !important;
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-}
-
-.light-theme .btn-primary:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.8) !important;
-  outline-offset: 3px !important;
+  background: rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 .light-theme .nav-cta {
-  background: rgba(0, 0, 0, 0.9) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: rgba(37, 99, 235, 0.9) !important;
+  border: 1px solid rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
 .light-theme .nav-cta:hover {
-  background: rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  background: rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
 }
 
 .light-theme .cta-mega-btn {
-  background: rgba(0, 0, 0, 0.95) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
-              0 2px 8px rgba(0, 0, 0, 0.1),
+  background: rgba(37, 99, 235, 0.95) !important;
+  border: 1px solid rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2),
               inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .light-theme .cta-mega-btn:hover {
-  background: rgba(0, 0, 0, 1) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3),
-              0 4px 12px rgba(0, 0, 0, 0.15),
+  background: rgba(37, 99, 235, 1) !important;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3),
               inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
@@ -263,8 +253,8 @@ body:not(.light-theme) .video-overlay {
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   backdrop-filter: blur(50px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(50px) saturate(180%) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
-              0 4px 16px rgba(0, 0, 0, 0.08),
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1),
+              0 4px 16px rgba(59, 130, 246, 0.06),
               inset 0 2px 4px rgba(255, 255, 255, 0.8),
               inset 0 -1px 2px rgba(0, 0, 0, 0.03) !important;
 }
@@ -274,8 +264,8 @@ body:not(.light-theme) .video-overlay {
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(80px) saturate(200%) brightness(1.05) !important;
   -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(1.05) !important;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15),
-              0 6px 24px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.12),
+              0 6px 24px rgba(59, 130, 246, 0.08),
               inset 0 4px 8px rgba(255, 255, 255, 1),
               inset 0 -3px 6px rgba(0, 0, 0, 0.04) !important;
 }
@@ -303,7 +293,7 @@ body:not(.light-theme) .video-overlay {
   backdrop-filter: blur(16px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
   color: var(--text-primary) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08),
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.06),
               inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
 
@@ -313,7 +303,7 @@ body:not(.light-theme) .video-overlay {
   backdrop-filter: blur(16px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
   color: var(--text-primary) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08),
               inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -342,7 +332,7 @@ body:not(.light-theme) .video-overlay {
 .light-theme .chat-input:focus {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%) !important;
   border-color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05),
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.05),
               inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
 
@@ -353,15 +343,93 @@ body:not(.light-theme) .video-overlay {
 /* Gap scene styles are now in GapScene.css */
 
 .light-theme .send-btn {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  color: rgba(0, 0, 0, 0.6) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  color: #3B82F6 !important;
 }
 
 .light-theme .send-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
-  color: rgba(0, 0, 0, 0.9) !important;
+  background: #ffffff !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  color: #3B82F6 !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* =========================================================
+   CONTROLS - LIGHT THEME (BLUE ACCENT)
+   ========================================================= */
+
+/* Scene Title */
+.light-theme .scene-title-wrapper .title {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Scene Number */
+.light-theme .scene-number .num {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Scene Label */
+.light-theme .scene-label .num {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.light-theme .scene-label .title {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Scene Dots */
+.light-theme .scene-dot .dot-outer-ring {
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.light-theme .scene-dot .dot-inner {
+  background: rgba(0, 0, 0, 0.35) !important;
+}
+
+.light-theme .scene-dot:hover .dot-inner {
+  background: rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.light-theme .scene-dot.active .dot-outer-ring {
+  border-color: rgba(59, 130, 246, 0.9) !important;
+}
+
+.light-theme .scene-dot.active .dot-inner {
+  background: #3B82F6 !important;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.8),
+              0 0 20px rgba(59, 130, 246, 0.5) !important;
+}
+
+.light-theme .scene-dot.played .dot-inner {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.light-theme .scene-dot.played .dot-outer-ring {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Play/Pause Button */
+.light-theme .play-pause {
+  background: rgba(59, 130, 246, 0.2) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  color: #3B82F6 !important;
+  box-shadow: var(--shadow-2),
+              inset 0 0 20px rgba(59, 130, 246, 0.1) !important;
+}
+
+.light-theme .play-pause:hover {
+  background: rgba(59, 130, 246, 0.35) !important;
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  color: #3B82F6 !important;
+  box-shadow: var(--shadow-3),
+              inset 0 0 30px rgba(59, 130, 246, 0.15),
+              0 0 20px rgba(59, 130, 246, 0.3) !important;
+}
+
+.light-theme .play-pause:focus-visible {
+  outline-color: rgba(59, 130, 246, 0.6) !important;
 }
 
 /* =========================================================
@@ -370,17 +438,17 @@ body:not(.light-theme) .video-overlay {
 
 /* Stat Scene */
 .light-theme .scene-stat .number {
-  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.6) 100%) !important;
+  background: linear-gradient(180deg, #3B82F6 0%, rgba(59, 130, 246, 0.6) 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
-  text-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1)) !important;
+  text-shadow: 0 0 40px rgba(59, 130, 246, 0.2) !important;
+  filter: drop-shadow(0 4px 20px rgba(59, 130, 246, 0.15)) !important;
 }
 
 .light-theme .scene-stat .number .unit {
-  color: rgba(0, 0, 0, 0.6) !important;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.6) !important;
+  color: rgba(59, 130, 246, 0.8) !important;
+  -webkit-text-fill-color: rgba(59, 130, 246, 0.8) !important;
   text-shadow: none !important;
 }
 
@@ -394,16 +462,17 @@ body:not(.light-theme) .video-overlay {
 
 /* Gap Scene */
 .light-theme .gap-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 1) 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .gap-card:hover {
   background: #ffffff !important;
-  border: 2px solid rgba(0, 0, 0, 0.3) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+  border: 2px solid rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15),
+              0 4px 12px rgba(59, 130, 246, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
@@ -454,7 +523,7 @@ body:not(.light-theme) .video-overlay {
 /* CTA Scene */
 .light-theme .scene-cta .header-row > .anim:first-child {
   color: var(--accent) !important;
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
 }
 
 .light-theme .scene-cta .section-title em,
@@ -473,7 +542,7 @@ body:not(.light-theme) .video-overlay {
 /* General Scene Elements */
 .light-theme .header-row > .anim:first-child {
   color: var(--accent) !important;
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
 }
 
 .light-theme .arrow-divider {
@@ -482,16 +551,17 @@ body:not(.light-theme) .video-overlay {
 
 /* How Scene */
 .light-theme .step {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 1) 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .step:hover {
   background: #ffffff !important;
-  border: 2px solid rgba(0, 0, 0, 0.3) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+  border: 2px solid rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15),
+              0 4px 12px rgba(59, 130, 246, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
@@ -518,15 +588,15 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .result .big-num {
-  color: #000000 !important;
+  color: #3B82F6 !important;
 }
 
 .light-theme .result .big-num span {
-  color: #000000 !important;
+  color: #3B82F6 !important;
 }
 
 .light-theme .result .big-num .small {
-  color: var(--text-secondary) !important;
+  color: #3B82F6 !important;
 }
 
 .light-theme .result .label {
@@ -535,16 +605,17 @@ body:not(.light-theme) .video-overlay {
 
 /* Solution Scene */
 .light-theme .feature {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 1) 100%) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
 .light-theme .feature:hover {
   background: #ffffff !important;
-  border: 2px solid rgba(0, 0, 0, 0.3) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+  border: 2px solid rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15),
+              0 4px 12px rgba(59, 130, 246, 0.1),
               inset 0 1px 0 rgba(255, 255, 255, 1) !important;
 }
 
@@ -581,97 +652,6 @@ body:not(.light-theme) .video-overlay {
   background: var(--accent) !important;
 }
 
-/* Controls */
-.light-theme .scene-title-wrapper .title {
-  color: var(--text-primary) !important;
-}
-
-.light-theme .scene-number .num {
-  color: var(--text-primary) !important;
-}
-
-.light-theme .scene-label {
-  color: var(--text-secondary) !important;
-}
-
-.light-theme .scene-label .num {
-  color: var(--text-primary) !important;
-}
-
-.light-theme .scene-label .title {
-  color: var(--text-primary) !important;
-}
-
-/* Control Buttons */
-.light-theme .play-pause,
-.light-theme .nav-arrow {
-  color: #000000 !important;
-  border-color: rgba(0, 0, 0, 0.2) !important;
-  /* Normal state looks like hover state */
-  background: rgba(0, 0, 0, 0.05) !important;
-  border: 2px solid rgba(0, 0, 0, 0.3) !important;
-  /* Remove shadow from normal state */
-  box-shadow: none !important;
-}
-
-.light-theme .play-pause svg,
-.light-theme .nav-arrow svg {
-  color: #000000 !important;
-}
-
-.light-theme .play-pause:hover,
-.light-theme .nav-arrow:hover {
-  background: rgba(0, 0, 0, 0.08) !important;
-  border-color: rgba(0, 0, 0, 0.4) !important;
-  color: #000000 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-}
-
-.light-theme .play-pause:hover svg,
-.light-theme .nav-arrow:hover svg {
-  color: #000000 !important;
-}
-
-/* Dots */
-.light-theme .dot {
-  background: rgba(0, 0, 0, 0.2) !important;
-}
-
-.light-theme .dot.active {
-  background: var(--accent) !important;
-}
-
-/* Scene Dots */
-.light-theme .scene-dot {
-  background: transparent !important;
-}
-
-.light-theme .scene-dot .dot-outer-ring {
-  border-color: rgba(0, 0, 0, 0.3) !important;
-}
-
-.light-theme .scene-dot .dot-inner {
-  background: rgba(0, 0, 0, 0.4) !important;
-}
-
-.light-theme .scene-dot:hover .dot-inner {
-  background: rgba(0, 0, 0, 0.6) !important;
-}
-
-.light-theme .scene-dot.active .dot-outer-ring {
-  border-color: var(--accent) !important;
-}
-
-.light-theme .scene-dot.active .dot-inner {
-  background: var(--accent) !important;
-  box-shadow: 0 0 10px var(--accent),
-              0 0 16px rgba(var(--accent-rgb, 0, 0, 0), 0.5) !important;
-}
-
-.light-theme .scene-dot.played .dot-inner {
-  background: rgba(0, 0, 0, 0.5) !important;
-}
-
 /* Eyebrow */
 .light-theme .eyebrow {
   color: var(--accent) !important;
@@ -687,7 +667,7 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .section-title .vs {
-  color: var(--text-muted) !important;
+  color: #3B82F6 !important;
 }
 
 /* Sub Text */

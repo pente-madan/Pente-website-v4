@@ -10,6 +10,8 @@
   --amber: #ffffff;
   --amber-glow: #ffffff;
   --terracotta: #ffffff;
+  --blue: #3B82F6;
+  --blue-glow: rgba(59, 130, 246, 0.5);
   --serif: 'Fraunces', 'Times New Roman', serif;
   --sans: 'Geist', system-ui, sans-serif;
   --mono: 'JetBrains Mono', monospace;
@@ -29,11 +31,11 @@
   --space-lg: 4rem;
   --space-xl: 8rem;
 
-  /* Elevation Shadows */
-  --shadow-1: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-2: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-  --shadow-3: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
-  --shadow-4: 0 12px 24px rgba(0, 0, 0, 0.18), 0 6px 12px rgba(0, 0, 0, 0.12);
-  --shadow-5: 0 20px 40px rgba(0, 0, 0, 0.22), 0 10px 20px rgba(0, 0, 0, 0.15);
-  --shadow-6: 0 30px 60px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2);
+  /* Elevation Shadows (Subtle Blue) */
+  --shadow-1: 0 2px 4px rgba(59, 130, 246, 0.08);
+  --shadow-2: 0 4px 8px rgba(59, 130, 246, 0.1), 0 2px 4px rgba(59, 130, 246, 0.06);
+  --shadow-3: 0 8px 16px rgba(59, 130, 246, 0.12), 0 4px 8px rgba(59, 130, 246, 0.08);
+  --shadow-4: 0 12px 24px rgba(59, 130, 246, 0.15), 0 6px 12px rgba(59, 130, 246, 0.1);
+  --shadow-5: 0 20px 40px rgba(59, 130, 246, 0.18), 0 10px 20px rgba(59, 130, 246, 0.12);
+  --shadow-6: 0 30px 60px rgba(59, 130, 246, 0.25), 0 15px 30px rgba(59, 130, 246, 0.15);
 }

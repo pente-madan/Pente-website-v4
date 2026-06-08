@@ -8,8 +8,13 @@ const GapScene = () => {
       right: 'Real-time conversational experience',
       oldIcon: (
         <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M6 7h8M6 10h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M2 7h16" stroke="currentColor" strokeWidth="1.5"/>
+          <circle cx="4.5" cy="5" r="0.5" fill="currentColor"/>
+          <circle cx="6.5" cy="5" r="0.5" fill="currentColor"/>
+          <circle cx="8.5" cy="5" r="0.5" fill="currentColor"/>
+          <rect x="5" y="10" width="10" height="1.5" rx="0.5" stroke="currentColor" strokeWidth="1"/>
+          <rect x="5" y="13" width="6" height="1.5" rx="0.5" stroke="currentColor" strokeWidth="1"/>
         </svg>
       ),
       newIcon: (
@@ -26,8 +31,9 @@ const GapScene = () => {
       right: 'Intelligent lead capture at every stage',
       oldIcon: (
         <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="3" width="12" height="14" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M7 7h6M7 10h4M7 13h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+          <path d="M3 6l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M3 14l4.5-3.5M17 14l-4.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
       newIcon: (
@@ -108,7 +114,7 @@ const GapScene = () => {
           THE GAP
         </div>
         <h2 className="section-title anim">
-          What you have today <span className="vs">vs</span> what we deliver tomorrow.
+          What you have today <span className="vs">vs</span> What we deliver tomorrow.
         </h2>
       </div>
 

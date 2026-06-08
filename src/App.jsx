@@ -17,7 +17,7 @@ import { useChatSimulation } from './hooks/useChatSimulation';
 import './App.css';
 import './styles/light-theme.css';
 
-const SCENE_DURATIONS = [11000, 6500, 9000, 9000, 7500, 9000, 8000];
+const SCENE_DURATIONS = [5000, 5000, 5000, 5000, 5000, 5000, 5000];
 
 const SCENE_TITLES = [
   'The Pitch',

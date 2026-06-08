@@ -12,8 +12,8 @@
   --terracotta: #ffffff;
   --blue: #1c59bd;
   --blue-glow: rgba(28, 89, 189, 0.5);
-  --serif: 'Fraunces', 'Times New Roman', serif;
-  --sans: 'Geist', system-ui, sans-serif;
+  --serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --sans: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --mono: 'JetBrains Mono', monospace;
   --nav-h: 70px;
   --controls-h: 60px;

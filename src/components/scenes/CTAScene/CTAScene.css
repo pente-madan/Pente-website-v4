@@ -30,13 +30,17 @@
 
 .scene-cta .section-title,
 .scene-cta h2 {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-family: 'Inter', var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: clamp(-0.04em, -0.5vw, -0.03em);
+  word-spacing: 0.2em;
   max-width: 900px;
   margin: 1rem auto 0;
+  font-variation-settings: 'opsz' 144;
+  font-optical-sizing: auto;
+  text-wrap: balance;
 }
 
 .scene-cta .section-title em,

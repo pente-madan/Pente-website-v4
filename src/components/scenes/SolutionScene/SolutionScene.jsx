@@ -48,7 +48,7 @@ const SolutionScene = () => {
           THE SOLUTION
         </div>
         <h2 className="section-title anim">
-          Your hardest-working <em>sales person</em> never off the clock.
+          Your hardest-working <span className="highlight-blue">sales person</span> never off the clock.
         </h2>
       </div>
 

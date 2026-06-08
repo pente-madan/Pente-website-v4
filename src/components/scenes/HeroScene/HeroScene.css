@@ -18,9 +18,9 @@
 
 .scene-hero h1,
 .scene-hero .section-title {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  font-family: 'Inter', var(--sans);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 4rem);
   line-height: 0.95;
   letter-spacing: clamp(-0.04em, -0.5vw, -0.03em);
   word-spacing: 0.2em;
@@ -32,7 +32,6 @@
 
 .scene-hero h1 .italic,
 .scene-hero .section-title .italic {
-  font-style: italic;
   font-weight: 300;
   color: var(--amber);
 }

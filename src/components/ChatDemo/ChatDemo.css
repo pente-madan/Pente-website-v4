@@ -759,12 +759,15 @@
 }
 
 .light-theme .suggestion-btn {
-  background: rgba(29, 29, 31, 0.05);
-  border: 1px solid rgba(29, 29, 31, 0.1);
+  background: #ffffff;
+  border: 1px solid #8CB4E8;
   color: var(--text-primary);
 }
 
 .light-theme .suggestion-btn:hover {
-  background: rgba(29, 29, 31, 0.08);
-  border-color: rgba(29, 29, 31, 0.15);
+  background: #ffffff;
+  border-color: #8CB4E8;
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(28, 89, 189, 0.15);
+  transform: translateY(-2px) scale(1.02);
 }

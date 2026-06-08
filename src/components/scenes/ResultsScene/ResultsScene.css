@@ -6,6 +6,10 @@
   margin-top: 0;
 }
 
+.scene-results .highlight-blue {
+  color: var(--accent) !important;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

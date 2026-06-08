@@ -112,32 +112,35 @@ const GapScene = () => {
         </h2>
       </div>
 
-      <div className="gap-comparison anim">
-        <div className="gap-column gap-old">
-          <h3 className="column-heading">Standard Static Sites</h3>
-          <div className="gap-items">
-            {gapItems.map((item, idx) => (
-              <div key={idx} className="gap-item">
-                {item.oldIcon}
-                <p className="item-text">{item.left}</p>
+      <div className="timeline-comparison anim">
+        <div className="timeline-line"></div>
+        
+        {gapItems.map((item, idx) => (
+          <div key={idx} className="timeline-item" style={{ '--delay': `${idx * 0.1}s` }}>
+            <div className="timeline-marker"></div>
+            
+            <div className="timeline-content">
+              {/* Before state */}
+              <div className="timeline-before">
+                <div className="timeline-icon">{item.oldIcon}</div>
+                <div className="timeline-text">{item.left}</div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="gap-divider"></div>
-
-        <div className="gap-column gap-new">
-          <h3 className="column-heading">Pente Smart Sites</h3>
-          <div className="gap-items">
-            {gapItems.map((item, idx) => (
-              <div key={idx} className="gap-item">
-                {item.newIcon}
-                <p className="item-text">{item.right}</p>
+              
+              {/* Arrow transformation */}
+              <div className="timeline-arrow">
+                <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+                  <path d="M0 8h30m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
-            ))}
+              
+              {/* After state */}
+              <div className="timeline-after">
+                <div className="timeline-icon">{item.newIcon}</div>
+                <div className="timeline-text">{item.right}</div>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );

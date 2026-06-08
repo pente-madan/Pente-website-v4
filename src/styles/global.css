@@ -153,7 +153,7 @@ a:active,
 .header-row > .anim:first-child {
   font-family: var(--mono);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--amber);

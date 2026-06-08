@@ -19,13 +19,13 @@ body:not(.light-theme)::after {
 
 .light-theme {
   /* BACKGROUNDS */
-  --bg: #FAF9F6;
+  --bg: #ffffff;
   --bg-secondary: #fafafa;
   --bg-card: #ffffff;
 
   /* TEXT */
-  --text-primary: #1d1d1f;
-  --text-secondary: #555555;
+  --text-primary: #000000;
+  --text-secondary: #000000;
   --text-muted: #999999;
 
   /* BORDERS */
@@ -112,7 +112,7 @@ body:not(.light-theme)::after {
 .light-theme label,
 .light-theme .description,
 .light-theme .subtitle {
-  color: var(--text-secondary) !important;
+  color: #000000 !important;
 }
 
 /* INPUTS */
@@ -125,7 +125,7 @@ body:not(.light-theme)::after {
 }
 
 /* BUTTONS */
-.light-theme button:not(.scene-dot):not(.play-pause):not(.nav-arrow):not(.send-btn):not(.chat-widget),
+.light-theme button:not(.scene-dot):not(.play-pause):not(.nav-arrow):not(.send-btn):not(.chat-widget):not(.theme-toggle):not(.suggestion-btn),
 .light-theme .btn,
 .light-theme .primary-btn {
   background: var(--accent) !important;
@@ -489,7 +489,7 @@ body:not(.light-theme) .video-overlay {
 }
 
 .light-theme .old-icon {
-  color: var(--text-muted) !important;
+  color: #000000 !important;
 }
 
 .light-theme .new-icon {
@@ -527,8 +527,9 @@ body:not(.light-theme) .video-overlay {
 
 /* General Scene Elements */
 .light-theme .header-row > .anim:first-child {
-  color: #ffffff !important;
-  background: var(--accent) !important;
+  color: var(--accent) !important;
+  background: rgba(28, 89, 189, 0.08) !important;
+  border: 1px solid var(--accent) !important;
 }
 
 .light-theme .arrow-divider {

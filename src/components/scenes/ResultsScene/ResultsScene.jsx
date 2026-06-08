@@ -41,7 +41,7 @@ const ResultsScene = ({ isActive }) => {
           PROVEN RESULTS
         </div>
         <h2 className="section-title anim">
-          The numbers <em>don't</em> need a sales pitch.
+          The numbers <em>don't</em> need a <span className="highlight-blue">sales pitch.</span>
         </h2>
       </div>
 

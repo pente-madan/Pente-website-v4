@@ -11,7 +11,7 @@ export const useSceneRotation = ({ scenesCount, durations }) => {
 
   const scheduleNext = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
-    if (isPaused || isHovering) return;
+    if (isPaused) return;
 
     const duration = durations[current];
     const remaining = Math.max(500, duration - pauseElapsedRef.current);

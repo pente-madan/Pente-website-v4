@@ -31,9 +31,14 @@ const GapScene = () => {
       right: 'Intelligent lead capture at every stage',
       oldIcon: (
         <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M3 6l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M3 14l4.5-3.5M17 14l-4.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M6 2h8v2H6z" fill="currentColor"/>
+          <rect x="5" y="3" width="10" height="14" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+          <circle cx="7" cy="7" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
+          <path d="M9 7h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="7" cy="10" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
+          <path d="M9 10h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="7" cy="13" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
+          <path d="M9 13h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
       newIcon: (
@@ -77,13 +82,13 @@ const GapScene = () => {
       ),
       newIcon: (
         <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="5" y="4" width="10" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <circle cx="10" cy="8" r="1.5" fill="currentColor"/>
-          <circle cx="7.5" cy="8" r="0.8" fill="currentColor"/>
-          <circle cx="12.5" cy="8" r="0.8" fill="currentColor"/>
-          <path d="M7 11h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M14 2l1.5 1.5M6 2L4.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="10" cy="14" r="0.8" fill="currentColor"/>
+          <circle cx="10" cy="4" r="1.5" fill="currentColor"/>
+          <circle cx="4" cy="8" r="1.5" fill="currentColor"/>
+          <circle cx="16" cy="8" r="1.5" fill="currentColor"/>
+          <circle cx="7" cy="14" r="1.5" fill="currentColor"/>
+          <circle cx="13" cy="14" r="1.5" fill="currentColor"/>
+          <circle cx="10" cy="10" r="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+          <path d="M10 5.5v2.5M8.5 10.5L5.5 8.5M11.5 10.5L14.5 8.5M9 11.5L7.5 12.5M11 11.5L12.5 12.5" stroke="currentColor" strokeWidth="1.2"/>
         </svg>
       )
     },

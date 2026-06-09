@@ -21,13 +21,13 @@ const CTAScene = () => {
       </p>
       <div className="anim">
         <Button variant="mega" href="#">
-          Book your personalized demo
+          Talk to the Agent right now
           <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
             <path d="M1 7h17m0 0L13 1m5 6l-5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
           </svg>
         </Button>
       </div>
-      <div className="cta-fineprint anim">15 MINUTES · ZERO OBLIGATION · BUILT FOR YOUR BUSINESS</div>
+      <div className="cta-fineprint anim">No forms. No calls. Just ask.</div>
     </>
   );
 };

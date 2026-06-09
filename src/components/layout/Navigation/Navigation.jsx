@@ -45,7 +45,7 @@ const Navigation = () => {
           )}
         </button>
         <Button variant="nav" href="/">
-          Book demo
+          Let's talk
           <svg width="16" height="11" viewBox="0 0 18 12" fill="none">
             <path
               d="M1 6h15m0 0L11 1m5 5l-5 5"

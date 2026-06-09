@@ -20,7 +20,7 @@ const HeroScene = () => {
         </p>
         <div className="anim">
           <Button href="#">
-            Book your 15-min demo
+            Talk to the Agent right here
             <svg width="16" height="11" viewBox="0 0 18 12" fill="none">
               <path
                 d="M1 6h15m0 0L11 1m5 5l-5 5"

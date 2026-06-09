@@ -19,7 +19,7 @@
 .scene-hero h1,
 .scene-hero .section-title {
   font-family: 'Inter', var(--sans);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(1.8rem, 4vw, 4rem);
   line-height: 0.95;
   letter-spacing: clamp(-0.04em, -0.5vw, -0.03em);
@@ -70,4 +70,12 @@
 
 .scene-hero .header-row {
   margin-bottom: 2rem;
+}
+
+.scene-hero .highlight-blue {
+  color: #ffffff !important;
+}
+
+.light-theme .scene-hero .highlight-blue {
+  color: var(--accent) !important;
 }

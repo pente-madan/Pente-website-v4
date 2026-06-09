@@ -208,7 +208,7 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
             <div className="welcome-icon">👋</div>
             <h3 className="welcome-title">Hey there!</h3>
             <p className="welcome-text">
-              Ready to turn your visitors into customers? Let's talk.
+              I'm your AI sales agent. What are you trying to solve?
             </p>
             <div className="welcome-suggestions">
               <button className="suggestion-btn" onClick={() => setInputValue("Show me the features")}>
@@ -246,7 +246,7 @@ const ChatDemo = ({ isHeroMode, isHowMode, isResultsMode, messages: initialMessa
           <input 
             type="text" 
             className="chat-input" 
-            placeholder="Your next lead is one reply away..."
+            placeholder="Talk to your AI sales agent..."
             aria-label="Chat input"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}

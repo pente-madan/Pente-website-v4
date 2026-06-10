@@ -21,7 +21,7 @@ export const useSceneRotation = ({ scenesCount, durations }) => {
       sceneStartRef.current = performance.now();
       pauseElapsedRef.current = 0;
     }, remaining);
-  }, [current, durations, scenesCount, isPaused, isHovering]);
+  }, [current, durations, scenesCount, isPaused]);
 
   useEffect(() => {
     scheduleNext();
@@ -30,7 +30,7 @@ export const useSceneRotation = ({ scenesCount, durations }) => {
     };
   }, [scheduleNext]);
 
-  const goToScene = useCallback((index: number) => {
+  const goToScene = useCallback((index) => {
     if (timerRef.current) clearTimeout(timerRef.current);
     setCurrent(index);
     sceneStartRef.current = performance.now();
@@ -51,7 +51,7 @@ export const useSceneRotation = ({ scenesCount, durations }) => {
     });
   }, []);
 
-  const setHover = useCallback((hovering: boolean) => {
+  const setHover = useCallback((hovering) => {
     setIsHovering(hovering);
     if (hovering) {
       pauseStartRef.current = performance.now();

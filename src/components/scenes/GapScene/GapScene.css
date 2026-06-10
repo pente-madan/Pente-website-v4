@@ -74,25 +74,19 @@
 }
 
 .box-left {
-  background: linear-gradient(145deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.35);
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.1),
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.02);
 }
 
 .box-right {
-  background: linear-gradient(145deg, rgba(28,89,189,0.25) 0%, rgba(79,70,229,0.15) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(28,89,189,0.25);
-  box-shadow:
-    0 8px 32px rgba(28,89,189,0.15),
-    inset 0 1px 0 rgba(255,255,255,0.3),
-    inset 0 -1px 0 rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.02);
 }
 
 .box-left::before,
@@ -126,7 +120,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: var(--accent);
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.6), #ffffff);
   border-radius: 2px;
 }
 
@@ -178,27 +172,21 @@
 }
 
 .capsule-left {
-  background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: rgba(0,0,0,0.75);
-  border: 1px solid rgba(255,255,255,0.4);
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.6),
-    inset 0 -1px 0 rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.02);
 }
 
 .capsule-right {
-  background: linear-gradient(135deg, rgba(28,89,189,0.6) 0%, rgba(79,70,229,0.5) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow:
-    0 4px 20px rgba(28,89,189,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.3),
-    inset 0 -1px 0 rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.02);
 }
 
 /* =========================================================
@@ -260,19 +248,19 @@
 }
 
 .capsule-left:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.35) 100%);
-  box-shadow:
-    0 8px 30px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.7),
-    inset 0 -1px 0 rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  transform: translateX(-50%) scale(1.06) rotate(0deg) !important;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12),
+              0 4px 12px rgba(255, 255, 255, 0.08);
 }
 
 .capsule-right:hover {
-  background: linear-gradient(135deg, rgba(28,89,189,0.75) 0%, rgba(79,70,229,0.65) 100%);
-  box-shadow:
-    0 8px 35px rgba(28,89,189,0.45),
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  transform: translateX(-50%) scale(1.06) rotate(0deg) !important;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12),
+              0 4px 12px rgba(255, 255, 255, 0.08);
 }
 
 .comparison-box:hover {
@@ -280,21 +268,36 @@
 }
 
 .box-left:hover {
-  box-shadow:
-    0 12px 40px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.5),
-    inset 0 -1px 0 rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.12),
+              0 4px 12px rgba(255, 255, 255, 0.08);
 }
 
 .box-right:hover {
-  box-shadow:
-    0 12px 40px rgba(28,89,189,0.2),
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.12),
+              0 4px 12px rgba(255, 255, 255, 0.08);
 }
 
 .comparison-box {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================================
+   DARK THEME STYLING
+   ========================================================= */
+
+.dark-theme .capsule-left .capsule-icon,
+.dark-theme .capsule-right .capsule-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-theme .capsule:hover .capsule-icon {
+  color: rgba(255, 255, 255, 1);
 }
 
 /* =========================================================
@@ -304,6 +307,10 @@
 .light-theme .box-left {
   background: linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(248,249,250,0.6) 100%);
   border-color: rgba(255,255,255,0.6);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    inset 0 -1px 0 rgba(0,0,0,0.02);
 }
 
 .light-theme .box-right {
@@ -315,6 +322,33 @@
   background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,249,250,0.7) 100%);
   color: rgba(0,0,0,0.8);
   border-color: rgba(255,255,255,0.8);
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    inset 0 -1px 0 rgba(0,0,0,0.02);
+}
+
+.light-theme .capsule-right {
+  background: linear-gradient(135deg, rgba(28,89,189,0.6) 0%, rgba(79,70,229,0.5) 100%);
+  color: #ffffff;
+  border-color: rgba(28,89,189,0.25);
+}
+
+.light-theme .capsule-right:hover {
+  background: linear-gradient(135deg, rgba(28,89,189,0.75) 0%, rgba(79,70,229,0.65) 100%);
+  border-color: rgba(28,89,189,0.4);
+  box-shadow:
+    0 8px 35px rgba(28,89,189,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+.light-theme .capsule-left .capsule-icon {
+  color: rgba(0,0,0,0.5);
+}
+
+.light-theme .capsule-right .capsule-icon {
+  color: rgba(255,255,255,0.9);
 }
 
 .light-theme .section-title {

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './GapScene.css';
 
 const GapScene = () => {
-  const [leftHovered, setLeftHovered] = useState(false);
-  const [rightHovered, setRightHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const gapItems = [
     { left: 'Static pages, no interaction', right: 'Real-time conversational experience' },
@@ -28,9 +27,9 @@ const GapScene = () => {
       <div className="crumpled-comparison anim">
         {/* Left Box - Today (Before) */}
         <div
-          className={`comparison-box box-left ${leftHovered ? 'is-hovered' : ''}`}
-          onMouseEnter={() => setLeftHovered(true)}
-          onMouseLeave={() => setLeftHovered(false)}
+          className={`comparison-box box-left ${isHovered ? 'is-hovered' : ''}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <div className="box-header">
             <span className="box-label">Today</span>
@@ -52,9 +51,9 @@ const GapScene = () => {
 
         {/* Right Box - With Pente (After) */}
         <div
-          className={`comparison-box box-right ${rightHovered ? 'is-hovered' : ''}`}
-          onMouseEnter={() => setRightHovered(true)}
-          onMouseLeave={() => setRightHovered(false)}
+          className={`comparison-box box-right ${isHovered ? 'is-hovered' : ''}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <div className="box-header">
             <span className="box-label">With Pente</span>

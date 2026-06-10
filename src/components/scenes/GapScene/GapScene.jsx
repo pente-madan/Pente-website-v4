@@ -1,157 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './GapScene.css';
 
 const GapScene = () => {
+  const [leftHovered, setLeftHovered] = useState(false);
+  const [rightHovered, setRightHovered] = useState(false);
+
   const gapItems = [
-    { 
-      left: 'Static pages, no interaction', 
-      right: 'Real-time conversational experience',
-      oldIcon: (
-        <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M2 7h16" stroke="currentColor" strokeWidth="1.5"/>
-          <circle cx="4.5" cy="5" r="0.5" fill="currentColor"/>
-          <circle cx="6.5" cy="5" r="0.5" fill="currentColor"/>
-          <circle cx="8.5" cy="5" r="0.5" fill="currentColor"/>
-          <rect x="5" y="10" width="10" height="1.5" rx="0.5" stroke="currentColor" strokeWidth="1"/>
-          <rect x="5" y="13" width="6" height="1.5" rx="0.5" stroke="currentColor" strokeWidth="1"/>
-        </svg>
-      ),
-      newIcon: (
-        <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3l-3 3-3-3H5a2 2 0 0 1-2-2V5z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <circle cx="7" cy="8.5" r="0.5" fill="currentColor"/>
-          <circle cx="10" cy="8.5" r="0.5" fill="currentColor"/>
-          <circle cx="13" cy="8.5" r="0.5" fill="currentColor"/>
-        </svg>
-      )
-    },
-    { 
-      left: 'Passive contact forms', 
-      right: 'Intelligent lead capture at every stage',
-      oldIcon: (
-        <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 2h8v2H6z" fill="currentColor"/>
-          <rect x="5" y="3" width="10" height="14" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-          <circle cx="7" cy="7" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <path d="M9 7h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="7" cy="10" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <path d="M9 10h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="7" cy="13" r="0.8" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <path d="M9 13h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      ),
-      newIcon: (
-        <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 3C8 3 6 4.5 6 7c0 3 4 6 4 6s4-3 4-6c0-2.5-2-4-4-4z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <circle cx="10" cy="7" r="1.5" fill="currentColor"/>
-          <circle cx="5" cy="15" r="1.5" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <circle cx="10" cy="17" r="1.5" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <circle cx="15" cy="15" r="1.5" stroke="currentColor" strokeWidth="1" fill="none"/>
-          <path d="M10 13L10 15.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
-        </svg>
-      )
-    },
-    { 
-      left: 'No visibility into visitor intent', 
-      right: "Full insights into who's ready to buy",
-      oldIcon: (
-        <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 10s3-5 7-5 7 5 7 5-3 5-7 5-7-5-7-5z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <circle cx="10" cy="10" r="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <path d="M3 3l14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      ),
-      newIcon: (
-        <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="14" height="11" rx="1" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M6 12V9M9 12V7M12 12V10M15 12V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      )
-    },
-    { 
-      left: 'Manual lead qualification', 
-      right: 'Intelligent AI lead qualification',
-      oldIcon: (
-        <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 11c0-1.5 1-3 2-3s2 1.5 2 3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <path d="M10 14v-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M6 7l4-3 4 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="10" cy="14" r="1" fill="currentColor"/>
-        </svg>
-      ),
-      newIcon: (
-        <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="10" cy="4" r="1.5" fill="currentColor"/>
-          <circle cx="4" cy="8" r="1.5" fill="currentColor"/>
-          <circle cx="16" cy="8" r="1.5" fill="currentColor"/>
-          <circle cx="7" cy="14" r="1.5" fill="currentColor"/>
-          <circle cx="13" cy="14" r="1.5" fill="currentColor"/>
-          <circle cx="10" cy="10" r="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <path d="M10 5.5v2.5M8.5 10.5L5.5 8.5M11.5 10.5L14.5 8.5M9 11.5L7.5 12.5M11 11.5L12.5 12.5" stroke="currentColor" strokeWidth="1.2"/>
-        </svg>
-      )
-    },
-    { 
-      left: 'Missed opportunities after hours', 
-      right: 'Never sleeps  converts 24/7',
-      oldIcon: (
-        <svg className="old-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M10 6v4l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M15 3l2 2M15 17l2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      ),
-      newIcon: (
-        <svg className="new-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          <path d="M10 6v4l2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M10 3v1M10 16v1M16 10h1M3 10h1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      )
-    },
+    { left: 'Static pages, no interaction', right: 'Real-time conversational experience' },
+    { left: 'Passive contact forms', right: 'Intelligent lead capture at every stage' },
+    { left: 'No visibility into visitor intent', right: "Full insights into who's ready to buy" },
+    { left: 'Manual lead qualification', right: 'Intelligent AI lead qualification' },
+    { left: 'Missed opportunities after hours', right: 'Never sleeps, converts 24/7' },
   ];
+
+  // Random rotations for crumpled effect
+  const rotations = [-12, 8, -6, 10, -9];
 
   return (
     <>
       <div className="header-row">
-        <div className="anim" style={{ display: 'inline-flex' }}>
-          THE GAP
-        </div>
+        <div className="accent-badge anim">THE GAP</div>
         <h2 className="section-title anim">
           What you have today <span className="vs">vs</span> What we deliver tomorrow.
         </h2>
       </div>
 
-      <div className="timeline-comparison anim">
-        <div className="timeline-line"></div>
-        
-        {gapItems.map((item, idx) => (
-          <div key={idx} className="timeline-item" style={{ '--delay': `${idx * 0.1}s` }}>
-            <div className="timeline-marker"></div>
-            
-            <div className="timeline-content">
-              {/* Before state */}
-              <div className="timeline-before">
-                <div className="timeline-icon">{item.oldIcon}</div>
-                <div className="timeline-text">{item.left}</div>
-              </div>
-              
-              {/* Arrow transformation */}
-              <div className="timeline-arrow">
-                <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
-                  <path d="M0 8h30m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              
-              {/* After state */}
-              <div className="timeline-after">
-                <div className="timeline-icon">{item.newIcon}</div>
-                <div className="timeline-text">{item.right}</div>
-              </div>
-            </div>
+      <div className="crumpled-comparison anim">
+        {/* Left Box - Today (Before) */}
+        <div
+          className={`comparison-box box-left ${leftHovered ? 'is-hovered' : ''}`}
+          onMouseEnter={() => setLeftHovered(true)}
+          onMouseLeave={() => setLeftHovered(false)}
+        >
+          <div className="box-header">
+            <span className="box-label">Today</span>
           </div>
-        ))}
+          <div className="capsules-container">
+            {gapItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="capsule capsule-left"
+                style={{
+                  '--crumpled-rotate': `${rotations[idx]}deg`,
+                }}
+              >
+                {item.left}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Box - With Pente (After) */}
+        <div
+          className={`comparison-box box-right ${rightHovered ? 'is-hovered' : ''}`}
+          onMouseEnter={() => setRightHovered(true)}
+          onMouseLeave={() => setRightHovered(false)}
+        >
+          <div className="box-header">
+            <span className="box-label">With Pente</span>
+          </div>
+          <div className="capsules-container">
+            {gapItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="capsule capsule-right"
+                style={{
+                  '--crumpled-rotate': `${rotations[(idx + 2) % 5]}deg`,
+                }}
+              >
+                {item.right}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

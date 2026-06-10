@@ -3,7 +3,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 export const useSceneRotation = ({ scenesCount, durations }) => {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
   const timerRef = useRef(null);
   const sceneStartRef = useRef(performance.now());
   const pauseStartRef = useRef(null);
@@ -52,7 +51,6 @@ export const useSceneRotation = ({ scenesCount, durations }) => {
   }, []);
 
   const setHover = useCallback((hovering) => {
-    setIsHovering(hovering);
     if (hovering) {
       pauseStartRef.current = performance.now();
     } else {

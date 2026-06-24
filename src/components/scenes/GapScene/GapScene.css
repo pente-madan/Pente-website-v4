@@ -151,7 +151,7 @@
    ========================================================= */
 
 .capsule {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.9rem 2rem;
@@ -183,7 +183,7 @@
 .capsule-right {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 100px;
   box-shadow: 0 1px 3px rgba(255, 255, 255, 0.02);
@@ -218,10 +218,10 @@
    ========================================================= */
 
 .capsule:nth-child(1) { top: 25px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(-40px, 0px); }
-.capsule:nth-child(2) { top: 80px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(35px, 0px); }
-.capsule:nth-child(3) { top: 135px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(-30px, 0px); }
-.capsule:nth-child(4) { top: 190px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(40px, 0px); }
-.capsule:nth-child(5) { top: 245px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(-35px, 0px); }
+.capsule:nth-child(2) { top: 35px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(35px, 0px); }
+.capsule:nth-child(3) { top: 45px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(-30px, 0px); }
+.capsule:nth-child(4) { top: 55px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(40px, 0px); }
+.capsule:nth-child(5) { top: 65px; transform: translateX(-50%) rotate(var(--crumpled-rotate, 0deg)) translate(-35px, 0px); }
 
 /* =========================================================
    BOX HOVER - STACKED STATE
@@ -233,24 +233,68 @@
 }
 
 .comparison-box.is-hovered .capsule:nth-child(1) { top: 5px !important; }
-.comparison-box.is-hovered .capsule:nth-child(2) { top: 75px !important; }
-.comparison-box.is-hovered .capsule:nth-child(3) { top: 145px !important; }
-.comparison-box.is-hovered .capsule:nth-child(4) { top: 215px !important; }
-.comparison-box.is-hovered .capsule:nth-child(5) { top: 285px !important; }
+.comparison-box.is-hovered .capsule:nth-child(2) { top: 25px !important; }
+.comparison-box.is-hovered .capsule:nth-child(3) { top: 45px !important; }
+.comparison-box.is-hovered .capsule:nth-child(4) { top: 65px !important; }
+.comparison-box.is-hovered .capsule:nth-child(5) { top: 85px !important; }
 
 /* =========================================================
    CAPSULE HOVER EFFECTS
    ========================================================= */
 
+.capsule-arrow {
+  position: absolute;
+  left: -55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  opacity: 0;
+  transform: translateX(-20px) scale(0.5);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.capsule-arrow svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+.capsule-text {
+  transition: transform 0.5s ease;
+}
+
 .capsule:hover {
   transform: translateX(-50%) scale(1.06) rotate(0deg) !important;
   z-index: 10;
+  gap: 0.75rem;
+}
+
+.capsule:hover .capsule-arrow {
+  width: auto;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  animation: arrowSlide 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.capsule:hover .capsule-text {
+  transform: translateX(10px);
+}
+
+@keyframes arrowSlide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
 }
 
 .capsule-left:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: #ffffff;
-  transform: translateX(-50%) scale(1.06) rotate(0deg) !important;
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12),
               0 4px 12px rgba(255, 255, 255, 0.08);
 }
@@ -258,7 +302,6 @@
 .capsule-right:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: #ffffff;
-  transform: translateX(-50%) scale(1.06) rotate(0deg) !important;
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12),
               0 4px 12px rgba(255, 255, 255, 0.08);
 }
@@ -330,8 +373,12 @@
 
 .light-theme .capsule-right {
   background: linear-gradient(135deg, rgba(28,89,189,0.6) 0%, rgba(79,70,229,0.5) 100%);
-  color: #ffffff;
+  color: #ffffff !important;
   border-color: rgba(28,89,189,0.25);
+}
+
+.light-theme .capsule-right .capsule-text {
+  color: #ffffff !important;
 }
 
 .light-theme .capsule-right:hover {
